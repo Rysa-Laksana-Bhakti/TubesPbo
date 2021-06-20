@@ -95,7 +95,7 @@ public class ControllerLogin implements Initializable {
             }else
                 JOptionPane.showMessageDialog(null, "Username atau Password Salah !!!");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, "Tidak ada koneksi ke database");
         }
 
     }
@@ -114,7 +114,7 @@ public class ControllerLogin implements Initializable {
 
             JOptionPane.showMessageDialog(null, "Data telah disimpan");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, "Data tidak disimpan");
         }
     }
 
