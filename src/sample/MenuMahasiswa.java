@@ -1,11 +1,17 @@
 package sample;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -25,6 +31,9 @@ public class MenuMahasiswa implements Initializable {
 
     @FXML
     private AnchorPane menuDosen;
+
+    @FXML
+    private Button btn_back;
 
     @FXML
     private TableView<?> tvPelaksanaanUjian;
@@ -75,6 +84,17 @@ public class MenuMahasiswa implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+    }
+
+    @FXML
+    void back(ActionEvent event) throws IOException {
+        btn_back.getScene().getWindow().hide();
+        Parent root = FXMLLoader.load(getClass().getResource("tampilanLogin.fxml"));
+        Stage mainStage = new Stage();
+        Scene scene = new Scene(root);
+        mainStage.setScene(scene);
+        mainStage.show();
 
     }
 }

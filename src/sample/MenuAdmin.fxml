@@ -8,7 +8,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MenuAdmin">
    <children>
       <ImageView fitHeight="506.0" fitWidth="727.0">
@@ -44,6 +43,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
+            <Button fx:id="btn_back" layoutX="619.0" layoutY="447.0" mnemonicParsing="false" onAction="#back" prefHeight="34.0" prefWidth="85.0" style="-fx-background-color: #ffd149;" text="Kembali" />
          </children>
       </AnchorPane>
    </children>
