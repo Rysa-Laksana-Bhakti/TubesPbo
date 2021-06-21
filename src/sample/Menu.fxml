@@ -10,14 +10,19 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="496.0" prefWidth="726.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MenuController">
+<AnchorPane fx:id="loadingMenu" prefHeight="496.0" prefWidth="726.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MenuController">
    <children>
-      <ImageView fitHeight="506.0" fitWidth="767.0" layoutX="-40.0">
+      <ImageView fitHeight="506.0" fitWidth="727.0">
          <image>
             <Image url="@../asset/background.jpg" />
          </image>
       </ImageView>
-      <AnchorPane fx:id="menuMahasiswa" prefHeight="496.0" prefWidth="727.0" style="-fx-background-color: #ffa000;" visible="false">
+      <Label layoutX="79.0" layoutY="167.0" prefHeight="143.0" prefWidth="570.0" text="Sedang Memuat Mohon Bersabar ini Ujian :v" textFill="#ddff01">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <AnchorPane fx:id="menuMahasiswa" prefHeight="506.0" prefWidth="727.0" style="-fx-background-color: #ffa000;" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c67100" height="75.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="727.0" />
             <Label layoutX="2.0" layoutY="2.0" prefHeight="75.0" prefWidth="340.0" text="Menu Mahasiswa">
@@ -25,19 +30,19 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Button layoutX="61.0" layoutY="248.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="164.0" style="-fx-background-color: #ffd149; -fx-background-radius: 90;" text="Pengajuan Proposal">
+            <Button fx:id="btn_pengajuanProposal" layoutX="61.0" layoutY="248.0" mnemonicParsing="false" onAction="#PengajuanProposal" prefHeight="52.0" prefWidth="164.0" style="-fx-background-color: #ffd149; -fx-background-radius: 90;" text="Pengajuan Proposal">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="489.0" layoutY="248.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="164.0" style="-fx-background-color: #ffd149; -fx-background-radius: 90;" text="Pendaftaran Ujian">
+            <Button fx:id="btn_pendaftaranUjian" layoutX="489.0" layoutY="248.0" mnemonicParsing="false" onAction="#PendaftaranUjian" prefHeight="52.0" prefWidth="164.0" style="-fx-background-color: #ffd149; -fx-background-radius: 90;" text="Pendaftaran Ujian">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="menuDosen" prefHeight="496.0" prefWidth="727.0" style="-fx-background-color: #ffa000;" visible="false">
+      <AnchorPane fx:id="menuDosen" prefHeight="506.0" prefWidth="727.0" style="-fx-background-color: #ffa000;" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c67100" height="75.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="727.0" />
             <Label layoutX="2.0" layoutY="2.0" prefHeight="75.0" prefWidth="340.0" text="Menu Dosen">
@@ -50,7 +55,7 @@
                   <Font name="System Bold Italic" size="17.0" />
                </font>
             </Label>
-            <TableView layoutX="15.0" layoutY="162.0" prefHeight="296.0" prefWidth="702.0">
+            <TableView fx:id="tvPelaksanaanUjian" layoutX="15.0" layoutY="162.0" prefHeight="296.0" prefWidth="702.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="No" />
                 <TableColumn prefWidth="625.0" text="Waktu Pelaksanaan Ujian" />
@@ -58,7 +63,7 @@
             </TableView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="menuMahasiswa1" prefHeight="506.0" prefWidth="727.0" style="-fx-background-color: #ffa000;" visible="false">
+      <AnchorPane fx:id="menuAdmin" prefHeight="506.0" prefWidth="727.0" style="-fx-background-color: #ffa000;" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c67100" height="75.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="727.0" />
             <Label layoutX="2.0" layoutY="2.0" prefHeight="75.0" prefWidth="340.0" text="Menu Admin">
@@ -66,27 +71,22 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Button layoutX="61.0" layoutY="248.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="164.0" style="-fx-background-color: #ffd149; -fx-background-radius: 90;" text="Approval">
+            <Button fx:id="btn_Approval" layoutX="61.0" layoutY="248.0" mnemonicParsing="false" onAction="#Approval" prefHeight="52.0" prefWidth="164.0" style="-fx-background-color: #ffd149; -fx-background-radius: 90;" text="Approval">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="289.0" layoutY="248.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="164.0" style="-fx-background-color: #ffd149; -fx-background-radius: 90;" text="Penjadwalan Ujian">
+            <Button fx:id="btn_PenjadwalanUjian" layoutX="289.0" layoutY="248.0" mnemonicParsing="false" onAction="#PenjadwalanUjian" prefHeight="52.0" prefWidth="164.0" style="-fx-background-color: #ffd149; -fx-background-radius: 90;" text="Penjadwalan Ujian">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="507.0" layoutY="248.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="164.0" style="-fx-background-color: #ffd149; -fx-background-radius: 90;" text="Nilai PKN">
+            <Button fx:id="btn_NilaiPKN" layoutX="507.0" layoutY="248.0" mnemonicParsing="false" onAction="#NilaiPKN" prefHeight="52.0" prefWidth="164.0" style="-fx-background-color: #ffd149; -fx-background-radius: 90;" text="Nilai PKN">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
-      <Label layoutX="79.0" layoutY="167.0" prefHeight="143.0" prefWidth="570.0" text="Sedang Memuat Mohon Bersabar ini Ujian :v" textFill="#ddff01">
-         <font>
-            <Font name="System Bold" size="26.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

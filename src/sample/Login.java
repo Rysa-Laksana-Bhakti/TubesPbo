@@ -1,7 +1,5 @@
 package sample;
-/**
- * tes hehe
- */
+
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
