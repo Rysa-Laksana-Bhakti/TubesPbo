@@ -51,7 +51,7 @@
                         <Image url="@../asset/logo-contact-person-png-Transparent-Images.png" />
                      </image>
                   </ImageView>
-                  <ComboBox fx:id="type" layoutX="133.0" layoutY="187.0" prefWidth="150.0" promptText="Anda Siapa" />
+                  <ComboBox fx:id="type" layoutX="133.0" layoutY="187.0" prefWidth="150.0" promptText="Pilih User" />
                   <Button fx:id="btn_login" layoutX="77.0" layoutY="257.0" mnemonicParsing="false" onAction="#Login" prefHeight="25.0" prefWidth="217.0" style="-fx-background-color: #ffcf0d; -fx-background-radius: 90;" text="Login">
                      <font>
                         <Font size="20.0" />
@@ -59,7 +59,7 @@
                   </Button>
                </children>
             </AnchorPane>
-            <HBox layoutX="180.0" layoutY="33.0" prefHeight="34.0" prefWidth="361.0" style="-fx-background-color: #000000; -fx-border-width: 2; -fx-border-color: #ffcf0d;">
+            <HBox layoutX="180.0" layoutY="40.0" prefHeight="34.0" prefWidth="361.0" style="-fx-background-color: #000000; -fx-border-width: 2; -fx-border-color: #ffcf0d;">
                <children>
                   <Button mnemonicParsing="false" onAction="#LoginpaneShow" prefHeight="25.0" prefWidth="203.0" style="-fx-background-color: #ffcf0d; -fx-background-radius: 90;" text="Login">
                      <HBox.margin>

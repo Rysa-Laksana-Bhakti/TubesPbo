@@ -81,21 +81,42 @@ public class ControllerLogin implements Initializable {
             pst.setString(3, type.getValue().toString());
 
             rs = pst.executeQuery();
+            String dataLogin = (String) type.getValue();
 
             if(rs.next()){
-                JOptionPane.showMessageDialog(null, "Username dan Password Benar");
+                if (dataLogin.equals("Mahasiswa")) {
+                    JOptionPane.showMessageDialog(null, "Username dan Password Benar");
 
-                btn_login.getScene().getWindow().hide();
-                Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
-                Stage mainStage = new Stage();
-                Scene scene = new Scene(root);
-                mainStage.setScene(scene);
-                mainStage.show();
+                    btn_login.getScene().getWindow().hide();
+                    Parent root = FXMLLoader.load(getClass().getResource("MenuMahasiswa.fxml"));
+                    Stage mainStage = new Stage();
+                    Scene scene = new Scene(root);
+                    mainStage.setScene(scene);
+                    mainStage.show();
+                } else if (dataLogin.equals("Dosen")) {
+                    JOptionPane.showMessageDialog(null, "Username dan Password Benar");
 
+                    btn_login.getScene().getWindow().hide();
+                    Parent root = FXMLLoader.load(getClass().getResource("MenuDosen.fxml"));
+                    Stage mainStage = new Stage();
+                    Scene scene = new Scene(root);
+                    mainStage.setScene(scene);
+                    mainStage.show();
+                } else if (dataLogin.equals("Admin")) {
+                    JOptionPane.showMessageDialog(null, "Username dan Password Benar");
+
+                    btn_login.getScene().getWindow().hide();
+                    Parent root = FXMLLoader.load(getClass().getResource("MenuAdmin.fxml"));
+                    Stage mainStage = new Stage();
+                    Scene scene = new Scene(root);
+                    mainStage.setScene(scene);
+                    mainStage.show();
+                }
             }else
                 JOptionPane.showMessageDialog(null, "Username atau Password Salah !!!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Tidak ada koneksi ke database");
+            System.out.println(e);
         }
 
     }

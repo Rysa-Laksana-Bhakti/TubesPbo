@@ -9,7 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MenuController implements Initializable {
+public class MenuMahasiswa implements Initializable {
 
     @FXML
     private AnchorPane loadingMenu;
@@ -40,6 +40,12 @@ public class MenuController implements Initializable {
 
     @FXML
     private Button btn_NilaiPKN;
+
+    /*public void MenuMahasiswaShow(){
+        menuMahasiswa.setVisible(true);
+        menuDosen.setVisible(false);
+        menuAdmin.setVisible(false);
+    }*/
 
     @FXML
     void Approval(ActionEvent event) {
