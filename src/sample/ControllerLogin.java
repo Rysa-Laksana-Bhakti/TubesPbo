@@ -88,7 +88,7 @@ public class ControllerLogin implements Initializable {
                     JOptionPane.showMessageDialog(null, "Username dan Password Benar");
 
                     btn_login.getScene().getWindow().hide();
-                    Parent root = FXMLLoader.load(getClass().getResource("MenuMahasiswa.fxml"));
+                    Parent root = FXMLLoader.load(getClass().getResource("../fxmlClass/MenuMahasiswa.fxml"));
                     Stage mainStage = new Stage();
                     Scene scene = new Scene(root);
                     mainStage.setScene(scene);
@@ -97,7 +97,7 @@ public class ControllerLogin implements Initializable {
                     JOptionPane.showMessageDialog(null, "Username dan Password Benar");
 
                     btn_login.getScene().getWindow().hide();
-                    Parent root = FXMLLoader.load(getClass().getResource("MenuDosen.fxml"));
+                    Parent root = FXMLLoader.load(getClass().getResource("../fxmlClass/MenuDosen.fxml"));
                     Stage mainStage = new Stage();
                     Scene scene = new Scene(root);
                     mainStage.setScene(scene);
@@ -106,7 +106,7 @@ public class ControllerLogin implements Initializable {
                     JOptionPane.showMessageDialog(null, "Username dan Password Benar");
 
                     btn_login.getScene().getWindow().hide();
-                    Parent root = FXMLLoader.load(getClass().getResource("MenuAdmin.fxml"));
+                    Parent root = FXMLLoader.load(getClass().getResource("../fxmlClass/MenuAdmin.fxml"));
                     Stage mainStage = new Stage();
                     Scene scene = new Scene(root);
                     mainStage.setScene(scene);

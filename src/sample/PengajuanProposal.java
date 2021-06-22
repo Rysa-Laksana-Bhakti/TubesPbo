@@ -12,9 +12,18 @@ import javafx.stage.FileChooser;
 import java.io.File;
 import java.io.IOException;
 import java.io.Writer;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class PengajuanProposal {
     FileChooser milih = new FileChooser();
+
+    @FXML
+    private TextField tfCV;
+
+    @FXML
+    private TextField tfPortofolio;
 
     @FXML
     private AnchorPane menuProposal;
@@ -38,6 +47,9 @@ public class PengajuanProposal {
     void submitAll(ActionEvent event) {
 
     }
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
 
     @FXML
     void uploadCV(ActionEvent event) {
@@ -45,6 +57,9 @@ public class PengajuanProposal {
             FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PDF files (*.txt)", "*.pdf");
             milih.getExtensionFilters().add(extFilter);
             File file = milih.showOpenDialog(btn_UploadCV.getParent().getScene().getWindow());
+            if(file !=null){
+                tfCV.setText(file.getPath());
+            }
             if (btn_submitAll.isPressed()){
 
             }
@@ -57,6 +72,9 @@ public class PengajuanProposal {
             FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PDF files (*.txt)", "*.pdf");
             milih.getExtensionFilters().add(extFilter);
             File file = milih.showOpenDialog(btn_UploadPortofolio.getParent().getScene().getWindow());
+            if(file !=null){
+                tfPortofolio.setText(file.getPath());
+            }
         });
     }
 

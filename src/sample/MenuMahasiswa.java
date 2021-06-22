@@ -36,7 +36,7 @@ public class MenuMahasiswa {
     @FXML
     void PengajuanProposal(ActionEvent event) throws IOException {
         btn_pengajuanProposal.getScene().getWindow().hide();
-        Parent root = FXMLLoader.load(getClass().getResource("PengajuanProposal.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../fxmlClass/PengajuanProposal.fxml"));
         Stage mainStage = new Stage();
         Scene scene = new Scene(root);
         mainStage.setScene(scene);

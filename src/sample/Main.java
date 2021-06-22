@@ -11,7 +11,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("tampilanLogin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../fxmlClass/tampilanLogin.fxml"));
         stage.setTitle("Program PKN");
         Scene scene = new Scene(root);
         stage.setScene(scene);
