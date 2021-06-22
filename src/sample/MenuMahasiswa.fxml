@@ -10,16 +10,11 @@
 
 <AnchorPane fx:id="loadingMenu" prefHeight="496.0" prefWidth="726.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MenuMahasiswa">
    <children>
-      <ImageView fitHeight="506.0" fitWidth="727.0">
+      <ImageView fitHeight="506.0" fitWidth="727.0" visible="false">
          <image>
             <Image url="@../asset/background.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="79.0" layoutY="167.0" prefHeight="143.0" prefWidth="570.0" text="Sedang Memuat Mohon Bersabar ini Ujian :v" textFill="#ddff01" visible="false">
-         <font>
-            <Font name="System Bold" size="26.0" />
-         </font>
-      </Label>
       <AnchorPane fx:id="menuMahasiswa" prefHeight="506.0" prefWidth="727.0" style="-fx-background-color: #ffa000;">
          <children>
             <Button fx:id="btn_pengajuanProposal" layoutX="61.0" layoutY="248.0" mnemonicParsing="false" onAction="#PengajuanProposal" prefHeight="52.0" prefWidth="164.0" style="-fx-background-radius: 90; -fx-background-color: #ffd149;" text="Pengajuan Proposal">
