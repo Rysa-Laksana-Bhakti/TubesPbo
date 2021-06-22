@@ -46,22 +46,7 @@ public class PengajuanProposal {
             milih.getExtensionFilters().add(extFilter);
             File file = milih.showOpenDialog(btn_UploadCV.getParent().getScene().getWindow());
             if (btn_submitAll.isPressed()){
-                Writer nulis = new Writer() {
-                    @Override
-                    public void write(char[] cbuf, int off, int len) throws IOException {
 
-                    }
-
-                    @Override
-                    public void flush() throws IOException {
-
-                    }
-
-                    @Override
-                    public void close() throws IOException {
-
-                    }
-                }
             }
         });
     }
