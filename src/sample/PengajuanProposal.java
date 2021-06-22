@@ -3,9 +3,14 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
 import javax.sound.midi.Patch;
 import java.io.File;
 import java.io.IOException;
@@ -14,7 +19,7 @@ import java.nio.file.Path;
 
 public class PengajuanProposal {
     FileChooser milih = new FileChooser();
-    Patch lokasi = "D:\\";
+
 
     @FXML
     private AnchorPane menuProposal;
@@ -40,6 +45,11 @@ public class PengajuanProposal {
     @FXML
     private Label tfPortofolio;
 
+    @FXML
+    private Button btn_back;
+
+
+
     public PengajuanProposal() throws IOException {
     }
 
@@ -49,7 +59,7 @@ public class PengajuanProposal {
             FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PDF files (*.pdf)", "*.pdf");
             milih.getExtensionFilters().add(extFilter);
             File file = milih.showOpenDialog(btn_UploadCV.getParent().getScene().getWindow());
-            if(file != null){
+           /** if(file != null){
                 String namaFile = file.getName();
                 Path lokasiFile = lokasi.resolve
 
@@ -62,8 +72,19 @@ public class PengajuanProposal {
                 tfCV.setText(file.getPath());
                 System.out.println(file.getName());
 
-            }
+            }**/
         });
+    }
+
+    @FXML
+    void back(ActionEvent event) throws IOException {
+        btn_back.getScene().getWindow().hide();
+        Parent root = FXMLLoader.load(getClass().getResource("../fxmlClass/MenuMahasiswa.fxml"));
+        Stage mainStage = new Stage();
+        Scene scene = new Scene(root);
+        mainStage.setScene(scene);
+        mainStage.show();
+
     }
 
     @FXML

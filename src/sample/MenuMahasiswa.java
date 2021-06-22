@@ -29,7 +29,13 @@ public class MenuMahasiswa {
     private Button btn_back;
 
     @FXML
-    void PendaftaranUjian(ActionEvent event) {
+    void PendaftaranUjian(ActionEvent event) throws IOException {
+        btn_pengajuanProposal.getScene().getWindow().hide();
+        Parent root = FXMLLoader.load(getClass().getResource("../fxmlClass/PendaftaranUjian.fxml"));
+        Stage mainStage = new Stage();
+        Scene scene = new Scene(root);
+        mainStage.setScene(scene);
+        mainStage.show();
 
     }
 
@@ -46,7 +52,7 @@ public class MenuMahasiswa {
     @FXML
     void back(ActionEvent event) throws IOException {
         btn_back.getScene().getWindow().hide();
-        Parent root = FXMLLoader.load(getClass().getResource("tampilanLogin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../fxmlClass/tampilanLogin.fxml"));
         Stage mainStage = new Stage();
         Scene scene = new Scene(root);
         mainStage.setScene(scene);
