@@ -1,29 +1,14 @@
 package sample;
 
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import java.io.File;
-import java.io.IOException;
-import java.io.Writer;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 public class PengajuanProposal {
     FileChooser milih = new FileChooser();
-
-    @FXML
-    private TextField tfCV;
-
-    @FXML
-    private TextField tfPortofolio;
 
     @FXML
     private AnchorPane menuProposal;
@@ -44,17 +29,21 @@ public class PengajuanProposal {
     private Button btn_submitAll;
 
     @FXML
+    private Label tfCV;
+
+    @FXML
+    private Label tfPortofolio;
+
+
+    @FXML
     void submitAll(ActionEvent event) {
 
     }
-    Connection conn = null;
-    ResultSet rs = null;
-    PreparedStatement pst = null;
 
     @FXML
     void uploadCV(ActionEvent event) {
         btn_UploadCV.setOnAction(event1 -> {
-            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PDF files (*.txt)", "*.pdf");
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PDF files (*.pdf)", "*.pdf");
             milih.getExtensionFilters().add(extFilter);
             File file = milih.showOpenDialog(btn_UploadCV.getParent().getScene().getWindow());
             if(file !=null){
