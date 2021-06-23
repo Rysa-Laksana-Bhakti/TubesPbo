@@ -45,7 +45,7 @@
             <Font name="Arial" size="25.0" />
          </font>
       </Label>
-      <Button fx:id="btn_submitAll" layoutX="50.0" layoutY="409.0" mnemonicParsing="false" onAction="#submitAll" text="Submit">
+      <Button fx:id="btn_submitAll" layoutX="55.0" layoutY="420.0" mnemonicParsing="false" onAction="#submitAll" text="Submit">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
@@ -55,5 +55,11 @@
       <DatePicker fx:id="fieldWaktuPKN" layoutX="326.0" layoutY="210.0" promptText="Time" />
       <Label fx:id="tfCV" layoutX="464.0" layoutY="279.0" prefHeight="25.0" prefWidth="229.0" />
       <Label fx:id="tfPortofolio" layoutX="464.0" layoutY="337.0" prefHeight="25.0" prefWidth="229.0" />
+      <Button fx:id="btn_back" layoutX="590.0" layoutY="455.0" mnemonicParsing="false" onAction="#back" prefHeight="34.0" prefWidth="125.0" style="-fx-background-color: #ffd149;" text="Kembali" />
+      <ImageView fitHeight="34.0" fitWidth="37.0" layoutX="590.0" layoutY="455.0">
+         <image>
+            <Image url="@../asset/icons8_back_to_48.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

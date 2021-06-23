@@ -28,12 +28,27 @@
                </font>
             </Button>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c67100" height="75.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="727.0" />
-            <Label layoutX="2.0" layoutY="2.0" prefHeight="75.0" prefWidth="340.0" text="Menu Mahasiswa">
+            <Label layoutX="214.0" prefHeight="75.0" prefWidth="300.0" text="Menu Mahasiswa" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Button fx:id="btn_back" layoutX="620.0" layoutY="445.0" mnemonicParsing="false" onAction="#back" prefHeight="34.0" prefWidth="85.0" style="-fx-background-color: #ffd149;" text="Kembali" />
+            <Button fx:id="btn_back" layoutX="580.0" layoutY="445.0" mnemonicParsing="false" onAction="#back" prefHeight="34.0" prefWidth="125.0" style="-fx-background-color: #ffd149;" text="Kembali" />
+            <ImageView fitHeight="34.0" fitWidth="37.0" layoutX="580.0" layoutY="445.0">
+               <image>
+                  <Image url="@../asset/icons8_back_to_48.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="99.0" fitWidth="125.0" layoutX="81.0" layoutY="130.0">
+               <image>
+                  <Image url="@../asset/icons8_copybook_48.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="99.0" fitWidth="104.0" layoutX="519.0" layoutY="130.0">
+               <image>
+                  <Image url="@../asset/icons8_registration_48.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>
