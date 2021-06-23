@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class PendaftaranUjian {
+public class MenuMahasiswaUjian {
 
     @FXML
     private AnchorPane menuMahasiswa;

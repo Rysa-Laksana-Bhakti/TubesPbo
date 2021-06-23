@@ -6,59 +6,44 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class MenuAdmin {
+public class MenuAdminApproval {
 
     @FXML
-    private AnchorPane menuAdmin;
+    private Button btn_LihatData;
 
     @FXML
-    private Button btn_Approval;
+    private Button btn_Perusahaan;
 
     @FXML
     private Button btn_back;
 
-
     @FXML
-    private Button btn_PenjadwalanUjian;
-
-    @FXML
-    private Button btn_NilaiPKN;
-
-    @FXML
-    void Approval(ActionEvent event) throws IOException {
-        btn_Approval.getScene().getWindow().hide();
-        Parent root = FXMLLoader.load(getClass().getResource("../fxmlClass/MenuAdminApproval.fxml"));
+    void LihatData(ActionEvent event) throws IOException {
+        btn_back.getScene().getWindow().hide();
+        Parent root = FXMLLoader.load(getClass().getResource("../fxmlClass/MenuAdminDataMah.fxml"));
         Stage mainStage = new Stage();
         Scene scene = new Scene(root);
         mainStage.setScene(scene);
         mainStage.show();
-    }
-
-    @FXML
-    void NilaiPKN(ActionEvent event) {
-
-    }
-
-    @FXML
-    void PenjadwalanUjian(ActionEvent event) {
-
     }
 
     @FXML
     void back(ActionEvent event) throws IOException {
         btn_back.getScene().getWindow().hide();
-        Parent root = FXMLLoader.load(getClass().getResource("../fxmlClass/tampilanLogin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../fxmlClass/MenuAdmin.fxml"));
         Stage mainStage = new Stage();
         Scene scene = new Scene(root);
         mainStage.setScene(scene);
         mainStage.show();
-
     }
 
+    @FXML
+    void perusahaan(ActionEvent event) {
+
+    }
 
 }

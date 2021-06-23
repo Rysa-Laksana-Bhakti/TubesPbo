@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -7,18 +8,27 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import javax.sound.midi.Patch;
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
-public class PengajuanProposal {
+public class MenuMahasiswaProposal {
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
     FileChooser milih = new FileChooser();
     Path lokasi = Paths.get("D:\\");
 
@@ -52,9 +62,10 @@ public class PengajuanProposal {
     @FXML
     private Button btn_back;
 
+    @FXML
+    private TextArea AnggotaKelompok;
 
-
-    public PengajuanProposal() throws IOException {
+    public MenuMahasiswaProposal(){
     }
 
     @FXML
@@ -73,7 +84,7 @@ public class PengajuanProposal {
                 } catch (IOException e){
                     e.printStackTrace();
                 }
-                tfCV.setText(file.getPath());
+                tfCV.setText(file.getName());
             }
         });
     }
@@ -105,7 +116,7 @@ public class PengajuanProposal {
                 } catch (IOException e){
                     e.printStackTrace();
                 }
-                tfPortofolio.setText(file.getPath());
+                tfPortofolio.setText(file.getName());
             }
         });
     }
@@ -115,10 +126,23 @@ public class PengajuanProposal {
         btn_submitAll.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                conn = mysqlconnect.ConnectDb();
+                String sql = "insert into dataMahasiswa (anggotaKel,alamatKel,waktuAwal,waktuAkhir,namaFileCV,namaFilePorto) values (?,?,?,?,?,?)";
+                try {
+                    pst = conn.prepareStatement(sql);
+                    pst.setString(1, AnggotaKelompok.getText());
+                    pst.setString(2, fieldAlamatPKN.getText());
+                    pst.setString(3, fieldWaktuPKN.getValue().toString());
+                    pst.setString(4, fieldWaktuPKN2.getValue().toString());
+                    pst.setString(5, tfCV.getText());
+                    pst.setString(6, tfPortofolio.getText());
+                    pst.execute();
 
+                    JOptionPane.showMessageDialog(null, "Data telah disimpan");
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Data tidak disimpan");
+                }
             }
         });
     }
-
-
 }
