@@ -16,10 +16,11 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class PengajuanProposal {
     FileChooser milih = new FileChooser();
-
+    Path lokasi = Paths.get("D:\\");
 
     @FXML
     private AnchorPane menuProposal;
@@ -35,6 +36,9 @@ public class PengajuanProposal {
 
     @FXML
     private DatePicker fieldWaktuPKN;
+
+    @FXML
+    private DatePicker fieldWaktuPKN2;
 
     @FXML
     private Button btn_submitAll;
@@ -59,20 +63,18 @@ public class PengajuanProposal {
             FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PDF files (*.pdf)", "*.pdf");
             milih.getExtensionFilters().add(extFilter);
             File file = milih.showOpenDialog(btn_UploadCV.getParent().getScene().getWindow());
-           /** if(file != null){
-                String namaFile = file.getName();
-                Path lokasiFile = lokasi.resolve
-
-                //File menulis = new File(lokasi);
+            if(file != null){
+                tfCV.setText(file.getPath());
+                String namaCV = file.getName();
+                Path lokasiFileCV = lokasi.resolve(namaCV);
+                File writeCV = new File(String.valueOf(lokasiFileCV));
                 try {
-                    Files.copy(file.toPath(), menulis.toPath());
-                } catch (IOException e) {
+                    Files.copy(file.toPath(), writeCV.toPath());
+                } catch (IOException e){
                     e.printStackTrace();
                 }
                 tfCV.setText(file.getPath());
-                System.out.println(file.getName());
-
-            }**/
+            }
         });
     }
 
@@ -93,10 +95,17 @@ public class PengajuanProposal {
             FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PDF files (*.pdf)", "*.pdf");
             milih.getExtensionFilters().add(extFilter);
             File file = milih.showOpenDialog(btn_UploadPortofolio.getParent().getScene().getWindow());
-            if(file !=null){
+            if(file != null){
                 tfPortofolio.setText(file.getPath());
-
-                System.out.println(file.getAbsoluteFile());
+                String namaPorto = file.getName();
+                Path lokasiFilePorto = lokasi.resolve(namaPorto);
+                File writePorto = new File(String.valueOf(lokasiFilePorto));
+                try {
+                    Files.copy(file.toPath(), writePorto.toPath());
+                } catch (IOException e){
+                    e.printStackTrace();
+                }
+                tfPortofolio.setText(file.getPath());
             }
         });
     }
