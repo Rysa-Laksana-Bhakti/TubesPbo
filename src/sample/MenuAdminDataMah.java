@@ -57,7 +57,6 @@ public class MenuAdminDataMah {
     void forward(ActionEvent event) {
         if(btn_forward.isManaged()){
 
-            }
         }
     }
 
