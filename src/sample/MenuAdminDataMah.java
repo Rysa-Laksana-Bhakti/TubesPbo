@@ -203,11 +203,8 @@ public class MenuAdminDataMah implements Initializable {
     public void TabelShow() {
         paneDatamahasiswa.setVisible(false);
         paneTabel.setVisible(true);
-        taId.setText("0");
-        taAnggotaKelompok.setText(null);
-        taLokasi.setText(null);
-        taWaktuAwal.setText(null);
-        taWaktuAkhir.setText(null);
+        taId.setText("1");
+
     }
 
     @FXML

@@ -9,7 +9,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MenuMahasiswaUjian">
    <children>
       <ImageView fitHeight="506.0" fitWidth="727.0" layoutX="-2.0" visible="false">
@@ -50,9 +49,9 @@
                   <Font name="Arial" size="25.0" />
                </font>
             </Label>
-            <TextField layoutX="131.0" layoutY="105.0" prefHeight="25.0" prefWidth="225.0" />
-            <TextField layoutX="131.0" layoutY="163.0" prefHeight="25.0" prefWidth="225.0" />
-            <TextField layoutX="131.0" layoutY="220.0" prefHeight="25.0" prefWidth="225.0" />
+            <TextField fx:id="tfNama" layoutX="131.0" layoutY="105.0" prefHeight="25.0" prefWidth="225.0" />
+            <TextField fx:id="tfNim" layoutX="131.0" layoutY="163.0" prefHeight="25.0" prefWidth="225.0" />
+            <TextField fx:id="tfEmail" layoutX="131.0" layoutY="220.0" prefHeight="25.0" prefWidth="225.0" />
             <Button fx:id="btn_uploadNilaiPerusahaan" layoutX="280.0" layoutY="286.0" mnemonicParsing="false" onAction="#uploadNilaiPerusahaan" prefHeight="25.0" prefWidth="184.0" text="Upload Nilai dari Perusahaan" />
             <Button fx:id="btn_uploadLaporan" layoutX="280.0" layoutY="355.0" mnemonicParsing="false" onAction="#uploadLaporan" prefHeight="25.0" prefWidth="111.0" text="Upload Laporan" />
             <Label layoutX="21.0" layoutY="405.0" text="Pastikan data sudah benar sebelum klik submit" />
@@ -67,6 +66,13 @@
                   <Image url="@../asset/icons8_back_to_48.png" />
                </image>
             </ImageView>
+            <Label fx:id="tfNperusahaan" layoutX="485.0" layoutY="286.0" prefHeight="26.0" prefWidth="215.0" />
+            <Label fx:id="tfLaporan" layoutX="485.0" layoutY="355.0" prefHeight="26.0" prefWidth="215.0" />
+            <Label layoutX="372.0" layoutY="167.0" text="*Pastikan Nim tidak lebih dari 20 digit">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
