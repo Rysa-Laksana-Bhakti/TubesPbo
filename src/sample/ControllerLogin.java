@@ -145,6 +145,7 @@ public class ControllerLogin implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         type_up.getItems().addAll("Mahasiswa","Dosen","Admin");
         type.getItems().addAll("Mahasiswa","Dosen","Admin");
+
     }
 
 }
