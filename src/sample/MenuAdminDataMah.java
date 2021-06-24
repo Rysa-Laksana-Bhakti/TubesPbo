@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class MenuAdminDataMah implements Initializable {
@@ -27,11 +28,11 @@ public class MenuAdminDataMah implements Initializable {
     ResultSet rs = null;
     Statement pst = null;
 
+
     @FXML
     private AnchorPane paneDatamahasiswa;
     @FXML
     private AnchorPane paneTabel;
-
 
     @FXML
     private TableView<DataMahasiswa> tvDataMahasiswa;
@@ -95,37 +96,57 @@ public class MenuAdminDataMah implements Initializable {
     @FXML
     void backward(ActionEvent event) {
         if(btn_backward.isManaged()){
+            conn = mysqlconnect.ConnectDb();
+            int id = Integer.parseInt(taId.getText());
+            int hitung = id-1;
+            String back = String.valueOf(hitung);
 
+            String query = "SELECT * FROM datamahasiswa where idKel = "+back;
+            try{
+                pst = conn.createStatement();
+                rs = pst.executeQuery(query);
+                while(rs.next()){
+                    taId.setText(String.valueOf(rs.getInt("idKel")));
+                    taAnggotaKelompok.setText(String.valueOf(rs.getString("anggotaKel")));
+                    taLokasi.setText(String.valueOf(rs.getString("alamatKel")));
+                    taWaktuAwal.setText(String.valueOf(rs.getString("waktuAwal")));
+                    taWaktuAkhir.setText(String.valueOf(rs.getString("waktuAkhir")));
+                }
+
+            }catch (Exception ex){
+                ex.printStackTrace();
+
+            }
         }
     }
 
     @FXML
     void forward(ActionEvent event) {
         if(btn_forward.isManaged()){
-            taId.setText(String.valueOf(new PropertyValueFactory<DataMahasiswa, Integer>("idKel")));
-            taAnggotaKelompok.setText(String.valueOf(new PropertyValueFactory<DataMahasiswa, String>("anggotaKel")));
-            taLokasi.setText(String.valueOf(new PropertyValueFactory<DataMahasiswa, String>("alamatKel")));
-            taWaktuAwal.setText(String.valueOf(new PropertyValueFactory<DataMahasiswa, String>("waktuAwal")));
-            taWaktuAkhir.setText(String.valueOf(new PropertyValueFactory<DataMahasiswa, String>("waktuAkhir")));
-            /*DataMahasiswa dataMahasiswa = tvDataMahasiswa.getSelectionModel().getSelectedItem();
-            taId.setText(""+dataMahasiswa.getIdKel());
-            taAnggotaKelompok.setText(dataMahasiswa.getAnggotaKel());
-            taLokasi.setText(dataMahasiswa.getAlamatKel());
-            taWaktuAwal.setText(dataMahasiswa.getWaktuAwal());
-            taWaktuAkhir.setText(dataMahasiswa.getWaktuAkhir());*/
-        }
+            conn = mysqlconnect.ConnectDb();
 
-       /** btn_forward.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                DataMahasiswa dataMahasiswa = tvDataMahasiswa.getItems().get();
-                taId.setText(""+dataMahasiswa.getIdKel());
-                taAnggotaKelompok.setText(dataMahasiswa.getAnggotaKel());
-                taLokasi.setText(dataMahasiswa.getAlamatKel());
-                taWaktuAwal.setText(dataMahasiswa.getWaktuAwal());
-                taWaktuAkhir.setText(dataMahasiswa.getWaktuAkhir());
+            try{
+                int id = Integer.parseInt(taId.getText());
+                int hitung = id+1;
+                String next = String.valueOf(hitung);
+
+                String query = "SELECT * FROM datamahasiswa where idKel = "+next;
+
+                pst = conn.createStatement();
+                rs = pst.executeQuery(query);
+                while(rs.next()){
+                    taId.setText(String.valueOf(rs.getInt("idKel")));
+                    taAnggotaKelompok.setText(String.valueOf(rs.getString("anggotaKel")));
+                    taLokasi.setText(String.valueOf(rs.getString("alamatKel")));
+                    taWaktuAwal.setText(String.valueOf(rs.getString("waktuAwal")));
+                    taWaktuAkhir.setText(String.valueOf(rs.getString("waktuAkhir")));
+                }
+
+            }catch (Exception ex){
+                ex.printStackTrace();
+
             }
-        });**/
+        }
     }
 
     @FXML
@@ -171,18 +192,17 @@ public class MenuAdminDataMah implements Initializable {
         colAkhir.setCellValueFactory(new PropertyValueFactory<DataMahasiswa, String>("waktuAkhir"));
 
         tvDataMahasiswa.setItems(list);
-
-        /**taId.setText(String.valueOf(new PropertyValueFactory<DataMahasiswa, Integer>("idKel")));
-        taAnggotaKelompok.setText(String.valueOf(new PropertyValueFactory<DataMahasiswa, String>("anggotaKel")));
-        taLokasi.setText(String.valueOf(new PropertyValueFactory<DataMahasiswa, String>("alamatKel")));
-        taWaktuAwal.setText(String.valueOf(new PropertyValueFactory<DataMahasiswa, String>("waktuAwal")));
-        taWaktuAkhir.setText(String.valueOf(new PropertyValueFactory<DataMahasiswa, String>("waktuAkhir")));**/
     }
 
 
     public void DatapaneShow() {
         paneDatamahasiswa.setVisible(true);
         paneTabel.setVisible(false);
+        taId.setText("0");
+        taAnggotaKelompok.setText(null);
+        taLokasi.setText(null);
+        taWaktuAwal.setText(null);
+        taWaktuAkhir.setText(null);
     }
 
     public void TabelShow() {
