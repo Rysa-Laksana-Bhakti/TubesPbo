@@ -72,6 +72,7 @@ public class MenuMahasiswaProposal {
     void uploadCV(ActionEvent event) {
         btn_UploadCV.setOnAction(event1 -> {
             FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PDF files (*.pdf)", "*.pdf");
+            milih.setInitialDirectory(new File("D:\\"));
             milih.getExtensionFilters().add(extFilter);
             File file = milih.showOpenDialog(btn_UploadCV.getParent().getScene().getWindow());
             if(file != null){

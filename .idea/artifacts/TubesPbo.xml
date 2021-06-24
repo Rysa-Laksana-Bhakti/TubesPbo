@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="TubesPbo">
+    <output-path>$PROJECT_DIR$/../../Game/TubesPbo</output-path>
+    <root id="root">
+      <element id="archive" name="TubesPbo.jar">
+        <element id="module-output" name="TubesPbo" />
+      </element>
+    </root>
+  </artifact>
+</component>

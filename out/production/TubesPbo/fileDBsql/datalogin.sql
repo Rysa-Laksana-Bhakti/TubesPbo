@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Jun 2021 pada 16.18
--- Versi server: 10.4.17-MariaDB
--- Versi PHP: 7.4.14
+-- Generation Time: Jun 23, 2021 at 11:34 AM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 5.5.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -24,7 +23,30 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `datamahasiswa`
+--
+
+CREATE TABLE `datamahasiswa` (
+  `idKel` int(11) NOT NULL,
+  `anggotaKel` text NOT NULL,
+  `alamatKel` text NOT NULL,
+  `waktuAwal` date NOT NULL,
+  `waktuAkhir` date NOT NULL,
+  `namaFileCV` varchar(20) NOT NULL,
+  `namaFilePorto` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `datamahasiswa`
+--
+
+INSERT INTO `datamahasiswa` (`idKel`, `anggotaKel`, `alamatKel`, `waktuAwal`, `waktuAkhir`, `namaFileCV`, `namaFilePorto`) VALUES
+(2, 'aku\nkamu\ndia\nmereka\n', 'dimana saja', '2021-06-01', '2021-06-30', 'Resume.pdf', 'Resume2.pdf');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -36,34 +58,45 @@ CREATE TABLE `users` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `email`, `type`) VALUES
 (5, 'makan', 'minum', 'yaudah@gmail.com', 'Admin'),
-(4, 'rysal', '12345', 'rysalaksana@gmail.com', 'Admin');
+(4, 'rysal', '12345', 'rysalaksana@gmail.com', 'Admin'),
+(6, 'pan', 'pan', 'pan@byon.com', 'Mahasiswa'),
+(7, 'ir', 'ir', 'ir@byon.com', 'Dosen');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `datamahasiswa`
+--
+ALTER TABLE `datamahasiswa`
+  ADD PRIMARY KEY (`idKel`);
+
+--
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `datamahasiswa`
+--
+ALTER TABLE `datamahasiswa`
+  MODIFY `idKel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-COMMIT;
-
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
