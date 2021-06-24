@@ -59,7 +59,7 @@
             <Font name="Arial" size="25.0" />
          </font>
       </Label>
-      <TextArea fx:id="taId" editable="false" layoutX="80.0" layoutY="86.0" prefHeight="25.0" prefWidth="200.0" />
+      <TextArea fx:id="taId" editable="false" layoutX="80.0" layoutY="86.0" prefHeight="25.0" prefWidth="200.0" text="0" />
       <TextArea fx:id="taAnggotaKelompok" editable="false" layoutX="286.0" layoutY="145.0" prefHeight="59.0" prefWidth="404.0" />
       <TextArea fx:id="taLokasi" editable="false" layoutX="286.0" layoutY="218.0" prefHeight="30.0" prefWidth="404.0" />
       <TextArea fx:id="taWaktuAwal" editable="false" layoutX="286.0" layoutY="282.0" prefHeight="38.0" prefWidth="177.0" />

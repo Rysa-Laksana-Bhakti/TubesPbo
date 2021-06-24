@@ -198,16 +198,16 @@ public class MenuAdminDataMah implements Initializable {
     public void DatapaneShow() {
         paneDatamahasiswa.setVisible(true);
         paneTabel.setVisible(false);
-        taId.setText("0");
-        taAnggotaKelompok.setText(null);
-        taLokasi.setText(null);
-        taWaktuAwal.setText(null);
-        taWaktuAkhir.setText(null);
     }
 
     public void TabelShow() {
         paneDatamahasiswa.setVisible(false);
         paneTabel.setVisible(true);
+        taId.setText("0");
+        taAnggotaKelompok.setText(null);
+        taLokasi.setText(null);
+        taWaktuAwal.setText(null);
+        taWaktuAkhir.setText(null);
     }
 
     @FXML
