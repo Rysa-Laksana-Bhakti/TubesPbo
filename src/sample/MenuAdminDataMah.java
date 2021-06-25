@@ -62,7 +62,7 @@ public class MenuAdminDataMah implements Initializable {
     private Button btn_lihatPortofolio;
 
     @FXML
-    private TextArea taId;
+    private TextField taId;
 
     @FXML
     private TextArea taAnggotaKelompok;
@@ -71,10 +71,10 @@ public class MenuAdminDataMah implements Initializable {
     private TextArea taLokasi;
 
     @FXML
-    private TextArea taWaktuAwal;
+    private TextField taWaktuAwal;
 
     @FXML
-    private TextArea taWaktuAkhir;
+    private TextField taWaktuAkhir;
 
     @FXML
     private Button btn_backward;
@@ -203,7 +203,11 @@ public class MenuAdminDataMah implements Initializable {
     public void TabelShow() {
         paneDatamahasiswa.setVisible(false);
         paneTabel.setVisible(true);
-        taId.setText("1");
+        taId.setText("0");
+        taAnggotaKelompok.setText(null);
+        taLokasi.setText(null);
+        taWaktuAwal.setText(null);
+        taWaktuAkhir.setText(null);
 
     }
 

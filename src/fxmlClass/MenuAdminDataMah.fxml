@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Rectangle?>
@@ -20,8 +21,8 @@
          </font>
       </Label>
       <Button fx:id="btn_back" layoutX="624.0" layoutY="431.0" mnemonicParsing="false" onAction="#back" prefHeight="34.0" prefWidth="85.0" style="-fx-background-color: #ffd149;" text="Kembali" />
-      <Button fx:id="btn_lihatCV" layoutX="332.0" layoutY="332.0" mnemonicParsing="false" onAction="#lihatV" prefHeight="25.0" prefWidth="111.0" text="Lihat CV" />
-      <Button fx:id="btn_lihatPortofolio" layoutX="332.0" layoutY="374.0" mnemonicParsing="false" onAction="#lihatPortofolio" prefHeight="25.0" prefWidth="111.0" text="Lihat Portofolio" />
+      <Button fx:id="btn_lihatCV" layoutX="303.0" layoutY="332.0" mnemonicParsing="false" onAction="#lihatV" prefHeight="25.0" prefWidth="111.0" text="Lihat CV" />
+      <Button fx:id="btn_lihatPortofolio" layoutX="303.0" layoutY="374.0" mnemonicParsing="false" onAction="#lihatPortofolio" prefHeight="25.0" prefWidth="111.0" text="Lihat Portofolio" />
       <Label layoutX="43.0" layoutY="225.0" text="Lokasi">
          <font>
             <Font name="Arial" size="25.0" />
@@ -42,7 +43,7 @@
             <Font name="Arial" size="25.0" />
          </font>
       </Label>
-      <Label layoutX="477.0" layoutY="288.0" text="sampai">
+      <Label layoutX="463.0" layoutY="289.0" text="sampai">
          <font>
             <Font size="16.0" />
          </font>
@@ -54,16 +55,8 @@
       </Label>
       <Button fx:id="btn_backward" layoutX="112.0" layoutY="421.0" mnemonicParsing="false" onAction="#backward" prefHeight="34.0" prefWidth="85.0" style="-fx-background-color: #ffd149;" text="Sebelumnya" />
       <Button fx:id="btn_forward" layoutX="273.0" layoutY="421.0" mnemonicParsing="false" onAction="#forward" prefHeight="34.0" prefWidth="85.0" style="-fx-background-color: #ffd149;" text="Selanjutnya" />
-      <Label layoutX="43.0" layoutY="87.0" text="ID">
-         <font>
-            <Font name="Arial" size="25.0" />
-         </font>
-      </Label>
-      <TextArea fx:id="taId" editable="false" layoutX="80.0" layoutY="86.0" prefHeight="25.0" prefWidth="200.0" text="0" />
-      <TextArea fx:id="taAnggotaKelompok" editable="false" layoutX="286.0" layoutY="145.0" prefHeight="59.0" prefWidth="404.0" />
+      <TextArea fx:id="taAnggotaKelompok" editable="false" layoutX="286.0" layoutY="129.0" prefHeight="75.0" prefWidth="404.0" />
       <TextArea fx:id="taLokasi" editable="false" layoutX="286.0" layoutY="218.0" prefHeight="30.0" prefWidth="404.0" />
-      <TextArea fx:id="taWaktuAwal" editable="false" layoutX="286.0" layoutY="282.0" prefHeight="38.0" prefWidth="177.0" />
-      <TextArea fx:id="taWaktuAkhir" editable="false" layoutX="537.0" layoutY="282.0" prefHeight="38.0" prefWidth="177.0" />
       <HBox layoutX="537.0" layoutY="13.0" prefHeight="49.0" prefWidth="187.0" style="-fx-background-color: #ffa000; -fx-border-width: 2; -fx-border-color: #ffcf0d;">
          <children>
             <Button mnemonicParsing="false" onAction="#DatapaneShow" prefHeight="25.0" prefWidth="57.0" style="-fx-background-color: #ffcf0d; -fx-background-radius: 90;" text="Data">
@@ -78,6 +71,9 @@
             </Button>
          </children>
       </HBox>
+      <TextField fx:id="taId" layoutX="220.0" layoutY="426.0" prefHeight="25.0" prefWidth="21.0" text="0" />
+      <TextField fx:id="taWaktuAwal" editable="false" layoutX="284.0" layoutY="289.0" />
+      <TextField fx:id="taWaktuAkhir" editable="false" layoutX="537.0" layoutY="289.0" />
    </AnchorPane>
    <AnchorPane fx:id="paneTabel" prefHeight="489.0" prefWidth="733.0" style="-fx-background-color: #ffa000;" visible="false">
       <children>
