@@ -45,7 +45,13 @@ public class MenuAdmin {
     }
 
     @FXML
-    void PenjadwalanUjian(ActionEvent event) {
+    void PenjadwalanUjian(ActionEvent event) throws IOException {
+        btn_PenjadwalanUjian.getScene().getWindow().hide();
+        Parent root = FXMLLoader.load(getClass().getResource("../fxmlClass/MenuAdminJadwalUjian.fxml"));
+        Stage mainStage = new Stage();
+        Scene scene = new Scene(root);
+        mainStage.setScene(scene);
+        mainStage.show();
 
     }
 
