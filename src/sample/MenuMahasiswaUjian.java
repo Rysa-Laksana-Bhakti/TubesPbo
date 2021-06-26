@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -82,7 +83,7 @@ public class MenuMahasiswaUjian {
                 try {
                     pst = conn.prepareStatement(sql);
                     pst.setString(1, tfNama.getText());
-                    pst.setInt(2, Integer.parseInt(tfNim.getText()));
+                    pst.setString(2, tfNim.getText());
                     pst.setString(3, tfEmail.getText());
                     pst.setString(4, tfNperusahaan.getText());
                     pst.setString(5, tfLaporan.getText());
@@ -90,7 +91,7 @@ public class MenuMahasiswaUjian {
 
                     JOptionPane.showMessageDialog(null, "Data telah disimpan");
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Data tidak disimpan");
+                    JOptionPane.showMessageDialog(null, "Data tidak disimpan"+" "+e);
                 }
             }
         });
