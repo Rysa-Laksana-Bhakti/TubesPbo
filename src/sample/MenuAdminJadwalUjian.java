@@ -84,6 +84,22 @@ public class MenuAdminJadwalUjian implements Initializable {
 
     @FXML
     void hapus(ActionEvent event) {
+        btn_hapus.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                conn = mysqlconnect.ConnectDb();
+                String sql = "delete from daftarujian where ID=? ";
+                try {
+                    pstt = conn.prepareStatement(sql);
+                    pstt.setString(1,tfId.getText());
+                    pstt.execute();
+                    showIDujian();
+                    JOptionPane.showMessageDialog(null, "Data telah dihapus");
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Data tidak dihapus"+" "+e);
+                }
+            }
+        });
 
     }
 
@@ -158,6 +174,8 @@ public class MenuAdminJadwalUjian implements Initializable {
                     }
                 }
             });
+
+
         }
 
 
