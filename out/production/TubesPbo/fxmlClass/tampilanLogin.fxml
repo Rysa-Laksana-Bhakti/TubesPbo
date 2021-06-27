@@ -59,14 +59,14 @@
                   </Button>
                </children>
             </AnchorPane>
-            <HBox layoutX="180.0" layoutY="40.0" prefHeight="34.0" prefWidth="361.0" style="-fx-background-color: #000000; -fx-border-width: 2; -fx-border-color: #ffcf0d;">
+            <HBox layoutX="180.0" layoutY="33.0" prefHeight="34.0" prefWidth="361.0" style="-fx-background-color: #000000; -fx-border-width: 2; -fx-border-color: #ffcf0d;">
                <children>
-                  <Button mnemonicParsing="false" onAction="#LoginpaneShow" prefHeight="25.0" prefWidth="203.0" style="-fx-background-color: #ffcf0d; -fx-background-radius: 90;" text="Login">
+                  <Button fx:id="btn_loginShow" mnemonicParsing="false" onAction="#LoginpaneShow" prefHeight="25.0" prefWidth="203.0" style="-fx-background-color: #ffcf0d; -fx-background-radius: 90;" text="Login">
                      <HBox.margin>
                         <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#SignuppaneShow" prefHeight="25.0" prefWidth="217.0" style="-fx-background-color: #ffcf0d; -fx-background-radius: 90;" text="SignUp">
+                  <Button fx:id="btn_Signshow" mnemonicParsing="false" onAction="#SignuppaneShow" prefHeight="25.0" prefWidth="217.0" style="-fx-background-color: #ffcf0d; -fx-background-radius: 90;" text="SignUp">
                      <HBox.margin>
                         <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
                      </HBox.margin>

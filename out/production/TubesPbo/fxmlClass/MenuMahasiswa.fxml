@@ -17,12 +17,12 @@
       </ImageView>
       <AnchorPane fx:id="menuMahasiswa" prefHeight="506.0" prefWidth="727.0" style="-fx-background-color: #ffa000;">
          <children>
-            <Button fx:id="btn_pengajuanProposal" layoutX="61.0" layoutY="248.0" mnemonicParsing="false" onAction="#PengajuanProposal" prefHeight="52.0" prefWidth="164.0" style="-fx-background-radius: 90; -fx-background-color: #ffd149;" text="Pengajuan Proposal">
+            <Button fx:id="btn_pengajuanProposal" layoutX="61.0" layoutY="248.0" mnemonicParsing="false" onAction="#PengajuanProposal" onMousePressed="#mouse2" prefHeight="52.0" prefWidth="164.0" style="-fx-background-radius: 90; -fx-background-color: #ffd149; -fx-border-radius: 90; -fx-border-color: #c67100;" text="Pengajuan Proposal">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btn_pendaftaranUjian" layoutX="489.0" layoutY="248.0" mnemonicParsing="false" onAction="#PendaftaranUjian" prefHeight="52.0" prefWidth="164.0" style="-fx-background-color: #ffd149; -fx-background-radius: 90;" text="Pendaftaran Ujian">
+            <Button fx:id="btn_pendaftaranUjian" layoutX="489.0" layoutY="248.0" mnemonicParsing="false" onAction="#PendaftaranUjian" onMousePressed="#mouse1" prefHeight="52.0" prefWidth="164.0" style="-fx-background-color: #ffd149; -fx-border-color: #c67100; -fx-border-radius: 90; -fx-background-radius: 90;" text="Pendaftaran Ujian">
                <font>
                   <Font size="14.0" />
                </font>
@@ -33,7 +33,7 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Button fx:id="btn_back" layoutX="580.0" layoutY="445.0" mnemonicParsing="false" onAction="#back" prefHeight="34.0" prefWidth="125.0" style="-fx-background-color: #ffd149;" text="Kembali" />
+            <Button fx:id="btn_back" layoutX="580.0" layoutY="445.0" mnemonicParsing="false" onAction="#back" onMousePressed="#mouse3" prefHeight="34.0" prefWidth="125.0" style="-fx-background-color: #ffd149;" text="Kembali" />
             <ImageView fitHeight="34.0" fitWidth="37.0" layoutX="580.0" layoutY="445.0">
                <image>
                   <Image url="@../asset/icons8_back_to_48.png" />
