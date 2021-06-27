@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -51,6 +52,13 @@ public class ControllerLogin implements Initializable {
 
     @FXML
     private ComboBox  type_up;
+
+    @FXML
+    private Button btn_loginShow;
+
+    @FXML
+    private Button btn_Signshow;
+
 
 
     Connection conn = null;

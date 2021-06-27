@@ -26,8 +26,6 @@ public class MenuAdmin {
     @FXML
     private Button btn_PenjadwalanUjian;
 
-    @FXML
-    private Button btn_NilaiPKN;
 
     @FXML
     void Approval(ActionEvent event) throws IOException {
@@ -39,10 +37,6 @@ public class MenuAdmin {
         mainStage.show();
     }
 
-    @FXML
-    void NilaiPKN(ActionEvent event) {
-
-    }
 
     @FXML
     void PenjadwalanUjian(ActionEvent event) throws IOException {

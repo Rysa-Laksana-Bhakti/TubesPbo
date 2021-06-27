@@ -28,22 +28,32 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Button fx:id="btn_Approval" layoutX="61.0" layoutY="248.0" mnemonicParsing="false" onAction="#Approval" prefHeight="52.0" prefWidth="164.0" style="-fx-background-color: #ffd149; -fx-background-radius: 90;" text="Approval">
+            <Button fx:id="btn_Approval" layoutX="74.0" layoutY="248.0" mnemonicParsing="false" onAction="#Approval" prefHeight="52.0" prefWidth="164.0" style="-fx-background-color: #ffd149; -fx-background-radius: 90;" text="Approval">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btn_PenjadwalanUjian" layoutX="289.0" layoutY="248.0" mnemonicParsing="false" onAction="#PenjadwalanUjian" prefHeight="52.0" prefWidth="164.0" style="-fx-background-color: #ffd149; -fx-background-radius: 90;" text="Penjadwalan Ujian">
+            <Button fx:id="btn_PenjadwalanUjian" layoutX="472.0" layoutY="248.0" mnemonicParsing="false" onAction="#PenjadwalanUjian" prefHeight="52.0" prefWidth="164.0" style="-fx-background-color: #ffd149; -fx-background-radius: 90;" text="Penjadwalan Ujian ">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btn_NilaiPKN" layoutX="507.0" layoutY="248.0" mnemonicParsing="false" onAction="#NilaiPKN" prefHeight="52.0" prefWidth="164.0" style="-fx-background-color: #ffd149; -fx-background-radius: 90;" text="Nilai PKN">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="btn_back" layoutX="619.0" layoutY="447.0" mnemonicParsing="false" onAction="#back" prefHeight="34.0" prefWidth="85.0" style="-fx-background-color: #ffd149;" text="Kembali" />
+            <Button fx:id="btn_back" layoutX="590.0" layoutY="447.0" mnemonicParsing="false" onAction="#back" prefHeight="34.0" prefWidth="114.0" style="-fx-background-color: #ffd149;" text="Kembali" />
+            <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="590.0" layoutY="447.0">
+               <image>
+                  <Image url="@../asset/icons8_back_to_48.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="106.0" fitWidth="140.0" layoutX="86.0" layoutY="124.0">
+               <image>
+                  <Image url="@../asset/icons8_event_accepted_32.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="123.0" fitWidth="140.0" layoutX="484.0" layoutY="116.0">
+               <image>
+                  <Image url="@../asset/icons8_schedule_32.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>
