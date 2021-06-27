@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -25,23 +28,38 @@
       <AnchorPane fx:id="menuDosen" prefHeight="506.0" prefWidth="727.0" style="-fx-background-color: #ffa000;">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c67100" height="75.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="727.0" />
-            <Label layoutX="254.0" prefHeight="75.0" prefWidth="224.0" text="Menu Dosen">
+            <Label layoutX="14.0" prefHeight="45.0" prefWidth="142.0" text="Menu Dosen">
                <font>
-                  <Font name="System Bold" size="36.0" />
+                  <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <Label layoutX="275.0" layoutY="91.0" prefHeight="52.0" prefWidth="178.0" text="Jadwal Ujian Peserta" textFill="#1d8d31">
+            <Label layoutX="237.0" layoutY="12.0" prefHeight="52.0" prefWidth="253.0" text="Jadwal Ujian Peserta" textFill="#111111">
                <font>
-                  <Font name="System Bold Italic" size="17.0" />
+                  <Font name="System Bold Italic" size="25.0" />
                </font>
             </Label>
-            <TableView fx:id="tvPelaksanaanUjian" layoutX="15.0" layoutY="162.0" prefHeight="296.0" prefWidth="702.0">
+            <Button fx:id="btn_back" layoutX="602.0" layoutY="462.0" mnemonicParsing="false" onAction="#back" prefHeight="34.0" prefWidth="85.0" style="-fx-background-color: #ffd149;" text="Kembali" />
+            <Label layoutX="17.0" layoutY="85.0" text="ID">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="tfId" layoutX="52.0" layoutY="85.0" prefHeight="25.0" prefWidth="96.0" />
+            <Button fx:id="btn_lihatNilaiP" layoutX="336.0" layoutY="90.0" mnemonicParsing="false" onAction="#lihatNilaiPer" prefHeight="25.0" prefWidth="144.0" text="Lihat Nilai Perusahaan" />
+            <Button fx:id="btn_lihatLaporan" layoutX="543.0" layoutY="89.0" mnemonicParsing="false" onAction="#lihatLaporan" prefHeight="25.0" prefWidth="144.0" text="Lihat Laporan" />
+            <TableView fx:id="tvJadwalUjian" layoutX="13.0" layoutY="134.0" onMouseClicked="#handleMouseAction" prefHeight="319.0" prefWidth="702.0">
                <columns>
-                  <TableColumn prefWidth="75.0" text="No" />
-                  <TableColumn prefWidth="625.0" text="Waktu Pelaksanaan Ujian" />
+                  <TableColumn fx:id="colID" prefWidth="36.0" text="ID" />
+                  <TableColumn fx:id="colNama" prefWidth="191.0" text="Nama" />
+                  <TableColumn fx:id="colNim" prefWidth="107.0" text="NIM" />
+                  <TableColumn fx:id="colEmail" prefWidth="171.0" text="Email" />
+                  <TableColumn fx:id="colJadwal" prefWidth="123.0" text="Jadwal Ujian" />
+                  <TableColumn fx:id="colNilai" prefWidth="73.0" text="Nilai" />
                </columns>
             </TableView>
-            <Button fx:id="btn_back" layoutX="616.0" layoutY="466.0" mnemonicParsing="false" onAction="#back" prefHeight="34.0" prefWidth="85.0" style="-fx-background-color: #ffd149;" text="Kembali" />
+            <ComboBox fx:id="typeNilai" layoutX="21.0" layoutY="466.0" prefHeight="25.0" prefWidth="129.0" promptText="Masukkan Nilai" />
+            <Button fx:id="btn_submitAll" layoutX="257.0" layoutY="466.0" mnemonicParsing="false" text="Submit" />
+            <TextField fx:id="tfNilai" layoutX="175.0" layoutY="466.0" prefHeight="25.0" prefWidth="42.0" />
          </children>
       </AnchorPane>
    </children>

@@ -85,7 +85,7 @@ public class MenuAdminDataMah implements Initializable {
     @FXML
     void back(ActionEvent event) throws IOException {
         btn_back.getScene().getWindow().hide();
-        Parent root = FXMLLoader.load(getClass().getResource("../fxmlClass/MenuAdmin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../fxmlClass/MenuAdminApproval.fxml"));
         Stage mainStage = new Stage();
         Scene scene = new Scene(root);
         mainStage.setScene(scene);
