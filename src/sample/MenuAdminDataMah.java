@@ -10,13 +10,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
@@ -151,12 +156,48 @@ public class MenuAdminDataMah implements Initializable {
 
     @FXML
     void lihatPortofolio(ActionEvent event) {
+        btn_lihatPortofolio.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    conn = mysqlconnect.ConnectDb();
 
+                    String id = taId.getText();
+                    String query = "SELECT * FROM datamahasiswa where idKel = "+id;
+                    pst = conn.createStatement();
+                    rs = pst.executeQuery(query);
+                    while(rs.next()){
+                        String file = String.valueOf(rs.getString("namaFilePorto"));
+                        Desktop.getDesktop().browse(new URL("file:///D:/"+file).toURI());
+                    }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
     }
 
     @FXML
     void lihatV(ActionEvent event) {
+        btn_lihatCV.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    conn = mysqlconnect.ConnectDb();
 
+                    String id = taId.getText();
+                    String query = "SELECT * FROM datamahasiswa where idKel = "+id;
+                    pst = conn.createStatement();
+                    rs = pst.executeQuery(query);
+                    while(rs.next()){
+                        String file = String.valueOf(rs.getString("namaFileCV"));
+                        Desktop.getDesktop().browse(new URL("file:///D:/"+file).toURI());
+                    }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
     }
 
     public ObservableList<DataMahasiswa> getDataMahasiswaList(){
