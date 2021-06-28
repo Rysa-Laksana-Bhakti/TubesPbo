@@ -21,7 +21,7 @@
          </font>
       </Label>
       <Button fx:id="btn_back" layoutX="624.0" layoutY="431.0" mnemonicParsing="false" onAction="#back" prefHeight="34.0" prefWidth="85.0" style="-fx-background-color: #ffd149;" text="Kembali" />
-      <Button fx:id="btn_lihatCV" layoutX="303.0" layoutY="332.0" mnemonicParsing="false" onAction="#lihatV" prefHeight="25.0" prefWidth="111.0" text="Lihat CV" />
+      <Button fx:id="btn_lihatCV" layoutX="303.0" layoutY="332.0" mnemonicParsing="false" onAction="#lihatCV" prefHeight="25.0" prefWidth="111.0" text="Lihat CV" />
       <Button fx:id="btn_lihatPortofolio" layoutX="303.0" layoutY="374.0" mnemonicParsing="false" onAction="#lihatPortofolio" prefHeight="25.0" prefWidth="111.0" text="Lihat Portofolio" />
       <Label layoutX="43.0" layoutY="225.0" text="Lokasi">
          <font>

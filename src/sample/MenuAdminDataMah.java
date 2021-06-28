@@ -17,15 +17,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
-
 import java.awt.*;
 import java.io.IOException;
-import java.net.URI;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 public class MenuAdminDataMah implements Initializable {
@@ -168,7 +165,9 @@ public class MenuAdminDataMah implements Initializable {
                     rs = pst.executeQuery(query);
                     while(rs.next()){
                         String file = String.valueOf(rs.getString("namaFilePorto"));
-                        Desktop.getDesktop().browse(new URL("file:///D:/"+file).toURI());
+                        String encodeNama = URLEncoder.encode(file, StandardCharsets.UTF_8.toString());
+                        encodeNama = encodeNama.replace("+", "%20");
+                        Desktop.getDesktop().browse(new URL("file:///D:/"+encodeNama).toURI());
                     }
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -178,7 +177,7 @@ public class MenuAdminDataMah implements Initializable {
     }
 
     @FXML
-    void lihatV(ActionEvent event) {
+    void lihatCV(ActionEvent event) {
         btn_lihatCV.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -191,7 +190,9 @@ public class MenuAdminDataMah implements Initializable {
                     rs = pst.executeQuery(query);
                     while(rs.next()){
                         String file = String.valueOf(rs.getString("namaFileCV"));
-                        Desktop.getDesktop().browse(new URL("file:///D:/"+file).toURI());
+                        String encodeNama = URLEncoder.encode(file, StandardCharsets.UTF_8.toString());
+                        encodeNama = encodeNama.replace("+", "%20");
+                        Desktop.getDesktop().browse(new URL("file:///D:/"+encodeNama).toURI());
                     }
                 } catch (Exception ex) {
                     ex.printStackTrace();
