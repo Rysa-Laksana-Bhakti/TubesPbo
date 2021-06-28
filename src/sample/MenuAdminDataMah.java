@@ -17,6 +17,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
@@ -29,7 +31,7 @@ public class MenuAdminDataMah implements Initializable {
     Connection conn = null;
     ResultSet rs = null;
     Statement pst = null;
-
+    PreparedStatement pstt = null;
 
     @FXML
     private AnchorPane paneDatamahasiswa;
@@ -53,6 +55,10 @@ public class MenuAdminDataMah implements Initializable {
 
     @FXML
     private TableColumn<DataMahasiswa, String> colAkhir;
+
+    @FXML
+    private TableColumn<DataMahasiswa, String> colPersetujuan;
+
 
     @FXML
     private Button btn_back;
@@ -85,6 +91,12 @@ public class MenuAdminDataMah implements Initializable {
     private Button btn_forward;
 
     @FXML
+    private TextField tfPersetujuan;
+    @FXML
+    private Button btn_submitAll;
+
+
+    @FXML
     void back(ActionEvent event) throws IOException {
         btn_back.getScene().getWindow().hide();
         Parent root = FXMLLoader.load(getClass().getResource("../fxmlClass/MenuAdminApproval.fxml"));
@@ -113,12 +125,30 @@ public class MenuAdminDataMah implements Initializable {
                     taLokasi.setText(String.valueOf(rs.getString("alamatKel")));
                     taWaktuAwal.setText(String.valueOf(rs.getString("waktuAwal")));
                     taWaktuAkhir.setText(String.valueOf(rs.getString("waktuAkhir")));
+                    tfPersetujuan.setText(String.valueOf(rs.getString("Persetujuan")));
                 }
 
             }catch (Exception ex){
                 ex.printStackTrace();
 
             }
+            btn_submitAll.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    conn = mysqlconnect.ConnectDb();
+                    String sql = "UPDATE datamahasiswa set Persetujuan=? where idKel=? ";
+                    try {
+                        pstt = conn.prepareStatement(sql);
+                        pstt.setString(1, typeKeputusan.getValue().toString());
+                        pstt.setString(2,taId.getText());
+                        pstt.execute();
+                        showID();
+                        JOptionPane.showMessageDialog(null, "Data telah disimpan");
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Data tidak disimpan"+" "+e);
+                    }
+                }
+            });
         }
     }
 
@@ -142,12 +172,31 @@ public class MenuAdminDataMah implements Initializable {
                     taLokasi.setText(String.valueOf(rs.getString("alamatKel")));
                     taWaktuAwal.setText(String.valueOf(rs.getString("waktuAwal")));
                     taWaktuAkhir.setText(String.valueOf(rs.getString("waktuAkhir")));
+                    tfPersetujuan.setText(String.valueOf(rs.getString("Persetujuan")));
                 }
 
             }catch (Exception ex){
                 ex.printStackTrace();
 
             }
+            btn_submitAll.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    conn = mysqlconnect.ConnectDb();
+                    String sql = "UPDATE datamahasiswa set Persetujuan=? where idKel=? ";
+                    try {
+                        pstt = conn.prepareStatement(sql);
+                        pstt.setString(1, typeKeputusan.getValue().toString());
+                        pstt.setString(2,taId.getText());
+                        pstt.execute();
+                        showID();
+                        JOptionPane.showMessageDialog(null, "Data telah disimpan");
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Data tidak disimpan"+" "+e);
+                    }
+                }
+            });
+
         }
     }
 
@@ -213,7 +262,7 @@ public class MenuAdminDataMah implements Initializable {
             DataMahasiswa datamahasiswa;
             while(rs.next()){
                 datamahasiswa = new DataMahasiswa(rs.getInt("idKel"), rs.getString("anggotaKel"), rs.getString("alamatKel"), rs.getString("waktuAwal"),
-                        rs.getString("waktuAkhir"));
+                        rs.getString("waktuAkhir"),rs.getString("Persetujuan"));
                 DataMahasiswaList.add(datamahasiswa);
             }
 
@@ -232,6 +281,8 @@ public class MenuAdminDataMah implements Initializable {
         colLokasi.setCellValueFactory(new PropertyValueFactory<DataMahasiswa, String>("alamatKel"));
         colAwal.setCellValueFactory(new PropertyValueFactory<DataMahasiswa, String>("waktuAwal"));
         colAkhir.setCellValueFactory(new PropertyValueFactory<DataMahasiswa, String>("waktuAkhir"));
+        colPersetujuan.setCellValueFactory(new PropertyValueFactory<DataMahasiswa, String>("Persetujuan"));
+
 
         tvDataMahasiswa.setItems(list);
     }
@@ -250,6 +301,7 @@ public class MenuAdminDataMah implements Initializable {
         taLokasi.setText(null);
         taWaktuAwal.setText(null);
         taWaktuAkhir.setText(null);
+        tfPersetujuan.setText(null);
 
     }
 
@@ -261,13 +313,16 @@ public class MenuAdminDataMah implements Initializable {
         taLokasi.setText(dataMahasiswa.getAlamatKel());
         taWaktuAwal.setText(dataMahasiswa.getWaktuAwal());
         taWaktuAkhir.setText(dataMahasiswa.getWaktuAkhir());
+        tfPersetujuan.setText(dataMahasiswa.getPersetujuan());
     }
-
+    @FXML
+    private ComboBox typeKeputusan;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         showID();
 
+        typeKeputusan.getItems().addAll("Default","Approve","Decline");
     }
 }
 

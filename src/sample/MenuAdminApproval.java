@@ -23,7 +23,7 @@ public class MenuAdminApproval {
 
     @FXML
     void LihatData(ActionEvent event) throws IOException {
-        btn_back.getScene().getWindow().hide();
+        btn_LihatData.getScene().getWindow().hide();
         Parent root = FXMLLoader.load(getClass().getResource("../fxmlClass/MenuAdminDataMah.fxml"));
         Stage mainStage = new Stage();
         Scene scene = new Scene(root);
@@ -42,8 +42,14 @@ public class MenuAdminApproval {
     }
 
     @FXML
-    void perusahaan(ActionEvent event) {
+    void perusahaan(ActionEvent event) throws IOException {
 
+        btn_Perusahaan.getScene().getWindow().hide();
+        Parent root = FXMLLoader.load(getClass().getResource("../fxmlClass/MenuAdminApprovalList.fxml"));
+        Stage mainStage = new Stage();
+        Scene scene = new Scene(root);
+        mainStage.setScene(scene);
+        mainStage.show();
     }
 
 }
