@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="menuProposal" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffa000;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MenuMahasiswaProposal">
+<AnchorPane fx:id="menuProposal" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffa000;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Mahasiswa.MenuMahasiswaProposal">
    <children>
       <ImageView fitHeight="506.0" fitWidth="727.0" layoutX="-4.0" visible="false">
          <image>
