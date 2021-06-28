@@ -1,4 +1,4 @@
-package sample;
+package Admin;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,13 +10,21 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import Main.DaftarUjian;
+import Main.mysqlconnect;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -105,11 +113,55 @@ public class MenuAdminJadwalUjian implements Initializable {
 
     @FXML
     void lihatLaporan(ActionEvent event) {
+        btn_lihatLaporan.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    conn = mysqlconnect.ConnectDb();
+
+                    String id = tfId.getText();
+                    String query = "SELECT * FROM daftarujian where ID = "+id;
+                    pst = conn.createStatement();
+                    rs = pst.executeQuery(query);
+                    while(rs.next()){
+                        String file = String.valueOf(rs.getString("Laporan"));
+                        String encodeNama = URLEncoder.encode(file, StandardCharsets.UTF_8.toString());
+                        encodeNama = encodeNama.replace("+", "%20");
+                        Desktop.getDesktop().browse(new URL("file:///D:/"+encodeNama).toURI());
+                    }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+
+            }
+        });
 
     }
 
     @FXML
     void lihatNilaiPer(ActionEvent event) {
+        btn_lihatNilaiP.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    conn = mysqlconnect.ConnectDb();
+
+                    String id = tfId.getText();
+                    String query = "SELECT * FROM daftarujian where ID = "+id;
+                    pst = conn.createStatement();
+                    rs = pst.executeQuery(query);
+                    while(rs.next()){
+                        String file = String.valueOf(rs.getString("NilaiPerusahaan"));
+                        String encodeNama = URLEncoder.encode(file, StandardCharsets.UTF_8.toString());
+                        encodeNama = encodeNama.replace("+", "%20");
+                        Desktop.getDesktop().browse(new URL("file:///D:/"+encodeNama).toURI());
+                    }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+
+            }
+        });
 
     }
 

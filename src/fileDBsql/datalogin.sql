@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Jun 2021 pada 08.24
+-- Waktu pembuatan: 28 Jun 2021 pada 14.16
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 7.4.14
 
@@ -43,8 +43,7 @@ CREATE TABLE `daftarujian` (
 --
 
 INSERT INTO `daftarujian` (`ID`, `Nama`, `NIM`, `Email`, `waktuUjian`, `Nilai`, `NilaiPerusahaan`, `Laporan`) VALUES
-(1, 'Rysa Laksana', '202010370311128', 'rysalaksana@yahoo.co.id', '2 juli 2021', '', '0001-dikonversi_compressed 2.pdf', 'Rysa Laksana_128_resume PKM 1.pdf'),
-(2, 'Budi', '202010370311143', 'budika@gmail.com', '3 Maret 2022', NULL, 'Makalah AIK kelompok 10.pdf', 'kalender akademik UMM 2020-2021.pdf');
+(1, 'Rysa Laksana', '202010370311128', 'rysalaksana@yahoo.co.id', '2 juli 2022', 'Approve', '0001-dikonversi_compressed 2.pdf', 'Rysa Laksana_128_resume PKM 1.pdf');
 
 -- --------------------------------------------------------
 
@@ -59,16 +58,18 @@ CREATE TABLE `datamahasiswa` (
   `waktuAwal` date NOT NULL,
   `waktuAkhir` date NOT NULL,
   `namaFileCV` varchar(100) NOT NULL,
-  `namaFilePorto` varchar(100) NOT NULL
+  `namaFilePorto` varchar(100) NOT NULL,
+  `Persetujuan` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `datamahasiswa`
 --
 
-INSERT INTO `datamahasiswa` (`idKel`, `anggotaKel`, `alamatKel`, `waktuAwal`, `waktuAkhir`, `namaFileCV`, `namaFilePorto`) VALUES
-(1, '\naku\nkamu\ndia', 'Malang', '2021-06-03', '2021-06-04', '0001-dikonversi_compressed 2.pdf', '09 November 2020_ILPEM_Dahan CB._Yudisium.pdf'),
-(2, '\nbudi\nbeni\nburhan\nbennet', 'teyvat', '2021-06-12', '2021-06-16', 'Rysa Laksana_128_resume PKM 1.pdf', 'PL2-C-Rysa Laksana-202010370311128.pdf');
+INSERT INTO `datamahasiswa` (`idKel`, `anggotaKel`, `alamatKel`, `waktuAwal`, `waktuAkhir`, `namaFileCV`, `namaFilePorto`, `Persetujuan`) VALUES
+(1, '\naku\nkamu\ndia', 'Malang', '2021-06-03', '2021-06-04', '0001-dikonversi_compressed 2.pdf', '09 November 2020_ILPEM_Dahan CB._Yudisium.pdf', 'Approve'),
+(2, '\nbudi\nbeni\nburhan\nbennet', 'teyvat', '2021-06-12', '2021-06-16', 'Rysa Laksana_128_resume PKM 1.pdf', 'PL2-C-Rysa Laksana-202010370311128.pdf', 'Decline'),
+(3, 'budi\ndibu\nubid', 'Malang', '2021-06-20', '2021-07-03', 'PL1-C-Rysa Laksana-202010370311128.pdf', 'PL2-C-Rysa Laksana-202010370311128.pdf', '');
 
 -- --------------------------------------------------------
 
@@ -130,7 +131,7 @@ ALTER TABLE `daftarujian`
 -- AUTO_INCREMENT untuk tabel `datamahasiswa`
 --
 ALTER TABLE `datamahasiswa`
-  MODIFY `idKel` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idKel` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`

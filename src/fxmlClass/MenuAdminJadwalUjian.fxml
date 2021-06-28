@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="523.0" prefWidth="737.0" style="-fx-background-color: #ffa000;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MenuAdminJadwalUjian">
+<AnchorPane prefHeight="523.0" prefWidth="737.0" style="-fx-background-color: #ffa000;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.MenuAdminJadwalUjian">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c67100" height="75.0" layoutX="-5.0" layoutY="-8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="747.0" />
       <Label layoutX="210.0" prefHeight="75.0" prefWidth="318.0" text="Penjadwalan Ujian">

@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MenuAdminDataMah">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.MenuAdminDataMah">
    <AnchorPane fx:id="paneDatamahasiswa" prefHeight="489.0" prefWidth="736.0" style="-fx-background-color: #ffa000;">
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c67100" height="75.0" layoutX="-4.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="740.0" />
       <Label layoutX="9.0" prefHeight="75.0" prefWidth="280.0" text="Data Mahasiswa">
@@ -74,6 +75,9 @@
       <TextField fx:id="taId" layoutX="220.0" layoutY="426.0" prefHeight="25.0" prefWidth="21.0" text="0" />
       <TextField fx:id="taWaktuAwal" editable="false" layoutX="284.0" layoutY="289.0" />
       <TextField fx:id="taWaktuAkhir" editable="false" layoutX="537.0" layoutY="289.0" />
+      <ComboBox fx:id="typeKeputusan" layoutX="436.0" layoutY="332.0" prefHeight="25.0" prefWidth="106.0" promptText="Persetujuan" />
+      <TextField fx:id="tfPersetujuan" layoutX="556.0" layoutY="332.0" promptText="Persetujuan" />
+      <Button fx:id="btn_submitAll" layoutX="591.0" layoutY="374.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="66.0" text="Submit" />
    </AnchorPane>
    <AnchorPane fx:id="paneTabel" prefHeight="489.0" prefWidth="733.0" style="-fx-background-color: #ffa000;" visible="false">
       <children>
@@ -85,11 +89,12 @@
          </Label>
          <TableView fx:id="tvDataMahasiswa" layoutX="5.0" layoutY="77.0" onMouseClicked="#handleMouseAction" prefHeight="382.0" prefWidth="723.0">
             <columns>
-               <TableColumn fx:id="colId" prefWidth="46.0" text="ID" />
-               <TableColumn fx:id="colNamaAnggota" prefWidth="322.0" text="Nama Anggota Kelompok" />
-               <TableColumn fx:id="colLokasi" prefWidth="148.0" text="Lokasi" />
-               <TableColumn fx:id="colAwal" prefWidth="108.0" text="Tanggal" />
-               <TableColumn fx:id="colAkhir" prefWidth="98.0" text="Tanggal Akhir" />
+               <TableColumn fx:id="colId" prefWidth="38.0" text="ID" />
+               <TableColumn fx:id="colNamaAnggota" prefWidth="263.0" text="Nama Anggota Kelompok" />
+               <TableColumn fx:id="colLokasi" prefWidth="119.0" text="Lokasi" />
+               <TableColumn fx:id="colAwal" prefWidth="101.0" text="Tanggal" />
+               <TableColumn fx:id="colAkhir" prefWidth="123.0" text="Tanggal Akhir" />
+               <TableColumn fx:id="colPersetujuan" prefWidth="78.0" text="Persetujuan" />
             </columns>
          </TableView>
          <HBox layoutX="521.0" layoutY="10.0" prefHeight="49.0" prefWidth="200.0" style="-fx-background-color: #ffa000; -fx-border-width: 2; -fx-border-color: #ffcf0d;">
