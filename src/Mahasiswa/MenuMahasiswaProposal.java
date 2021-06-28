@@ -1,5 +1,6 @@
 package Mahasiswa;
 
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -15,6 +16,14 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import Main.mysqlconnect;
 
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
@@ -23,11 +32,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.util.Properties;
 
 public class MenuMahasiswaProposal {
     Connection conn = null;
-    ResultSet rs = null;
     PreparedStatement pst = null;
     FileChooser milih = new FileChooser();
     Path lokasi = Paths.get("D:\\");
@@ -143,6 +151,64 @@ public class MenuMahasiswaProposal {
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Data tidak disimpan");
                 }
+
+                Properties properties = new Properties();
+                properties.put("mail.smtp.auth", "true");
+                properties.put("mail.smtp.starttls.enable", "true");
+                properties.put("mail.smtp.host", "smtp.gmail.com");
+                properties.put("mail.smtp.port", "587");
+
+                String email = "email.noreply.bot@gmail.com";
+                String pass = "TubesMenyenangkan100%";
+                String penerima = "irfan64bit@gmail.com";
+
+                Session session = Session.getInstance(properties, new Authenticator() {
+                    @Override
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(email, pass);
+                    }
+                });
+
+                Message message = prepareMessage(session, email, penerima);
+                try {
+                    Transport.send(message);
+                    JOptionPane.showMessageDialog(null, "Terimakasih");
+                } catch (MessagingException e) {
+                    e.printStackTrace();
+                }
+            }
+            private Message prepareMessage(Session session, String email, String penerima){
+                Message message = new MimeMessage(session);
+                try {
+                    message.setFrom(new InternetAddress(email));
+                    message.setRecipient(Message.RecipientType.TO, new InternetAddress(penerima));
+                    message.setSubject("Pengajuan Proposal Mahasiswa");
+                    BodyPart isiEmail = new MimeBodyPart();
+                    isiEmail.setText(AnggotaKelompok.getText());
+
+                    Multipart multipart = new MimeMultipart();
+                    multipart.addBodyPart(isiEmail);
+
+                    isiEmail = new MimeBodyPart();
+                    String namaPorto = "D:\\"+tfPortofolio.getText();
+                    DataSource porto = new FileDataSource(namaPorto);
+                    isiEmail.setDataHandler(new DataHandler(porto));
+                    isiEmail.setFileName(tfPortofolio.getText());
+                    multipart.addBodyPart(isiEmail);
+
+                    isiEmail = new MimeBodyPart();
+                    String namaCV = "D:\\"+tfCV.getText();
+                    DataSource cv = new FileDataSource(namaCV);
+                    isiEmail.setDataHandler(new DataHandler(cv));
+                    isiEmail.setFileName(tfCV.getText());
+                    multipart.addBodyPart(isiEmail);
+
+                    message.setContent(multipart);
+                    return message;
+                } catch (MessagingException e) {
+                    e.printStackTrace();
+                }
+                return null;
             }
         });
     }
