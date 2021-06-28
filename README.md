@@ -1,5 +1,6 @@
 # TubesPbo
 ini merupakan Tugas Besar Matakuliah PBO yaitu membuat aplikasi pengajuan PKN (Praktek Kerja Nyata)
+menggunakan koneksi Database mySql sebagai tempat penyimpanan data user ataupun inputan user
 
 
 ![tampilanA](https://user-images.githubusercontent.com/71802110/123644284-6f85fc80-d84f-11eb-88d6-656b66bdcddf.png)
