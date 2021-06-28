@@ -1,6 +1,5 @@
-package sample;
+package Mahasiswa;
 
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -14,6 +13,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import Main.mysqlconnect;
 
 import javax.swing.*;
 import java.io.File;

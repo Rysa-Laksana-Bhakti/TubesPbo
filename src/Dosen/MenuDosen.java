@@ -1,4 +1,4 @@
-package sample;
+package Dosen;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,7 +15,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import Main.DaftarUjian;
+import Main.mysqlconnect;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,11 +32,23 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
-public class MenuAdminJadwalUjian implements Initializable {
+public class MenuDosen implements Initializable {
     Connection conn = null;
     ResultSet rs = null;
     Statement pst = null;
     PreparedStatement pstt = null;
+
+    @FXML
+    private AnchorPane menuDosen;
+
+    @FXML
+    private TextArea tfId;
+
+    @FXML
+    private Button btn_lihatNilaiP;
+
+    @FXML
+    private Button btn_lihatLaporan;
 
     @FXML
     private TableView<DaftarUjian> tvJadwalUjian;
@@ -57,57 +72,17 @@ public class MenuAdminJadwalUjian implements Initializable {
     private TableColumn<DaftarUjian, String> colNilai;
 
     @FXML
-    private Button btn_back;
-
-    @FXML
-    private TextField tfWaktuJadwal;
-
-    @FXML
-    private TextArea tfId;
-
-    @FXML
-    private Button btn_hapus;
+    private ComboBox typeNilai;
 
     @FXML
     private Button btn_submitAll;
 
     @FXML
-    private Button btn_lihatNilaiP;
+    private TextField tfNilai;
+
 
     @FXML
-    private Button btn_lihatLaporan;
-
-    @FXML
-    void back(ActionEvent event) throws IOException {
-        btn_back.getScene().getWindow().hide();
-        Parent root = FXMLLoader.load(getClass().getResource("../fxmlClass/MenuAdmin.fxml"));
-        Stage mainStage = new Stage();
-        Scene scene = new Scene(root);
-        mainStage.setScene(scene);
-        mainStage.show();
-
-    }
-
-    @FXML
-    void hapus(ActionEvent event) {
-        btn_hapus.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                conn = mysqlconnect.ConnectDb();
-                String sql = "delete from daftarujian where ID=? ";
-                try {
-                    pstt = conn.prepareStatement(sql);
-                    pstt.setString(1,tfId.getText());
-                    pstt.execute();
-                    showIDujian();
-                    JOptionPane.showMessageDialog(null, "Data telah dihapus");
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Data tidak dihapus"+" "+e);
-                }
-            }
-        });
-
-    }
+    private Button btn_back;
 
     @FXML
     void lihatLaporan(ActionEvent event) {
@@ -133,7 +108,6 @@ public class MenuAdminJadwalUjian implements Initializable {
 
             }
         });
-
     }
 
     @FXML
@@ -160,10 +134,7 @@ public class MenuAdminJadwalUjian implements Initializable {
 
             }
         });
-
     }
-
-
 
     public ObservableList<DaftarUjian> getDaftarUjianList(){
         ObservableList<DaftarUjian>DaftarUjianList= FXCollections.observableArrayList();
@@ -188,7 +159,6 @@ public class MenuAdminJadwalUjian implements Initializable {
         }
         return  DaftarUjianList;
     }
-
     public void showIDujian(){
         ObservableList<DaftarUjian> list = getDaftarUjianList();
 
@@ -205,35 +175,46 @@ public class MenuAdminJadwalUjian implements Initializable {
     private void handleMouseAction(MouseEvent event) {
         DaftarUjian daftarMahasiswa = tvJadwalUjian.getSelectionModel().getSelectedItem();
         tfId.setText(""+daftarMahasiswa.getID());
-        tfWaktuJadwal.setText(daftarMahasiswa.getWaktuUjian());
+        tfNilai.setText(daftarMahasiswa.getNilai());
 
-            btn_submitAll.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    conn = mysqlconnect.ConnectDb();
-                    String sql = "UPDATE daftarujian set waktuUjian=? where ID=? ";
-                    try {
-                        pstt = conn.prepareStatement(sql);
-                        pstt.setString(1, tfWaktuJadwal.getText());
-                        pstt.setString(2,tfId.getText());
-                        pstt.execute();
-                        showIDujian();
-                        JOptionPane.showMessageDialog(null, "Data telah disimpan");
-                    } catch (Exception e) {
-                        JOptionPane.showMessageDialog(null, "Data tidak disimpan"+" "+e);
-                    }
+        btn_submitAll.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                conn = mysqlconnect.ConnectDb();
+                String sql = "UPDATE daftarujian set Nilai=? where ID=? ";
+                try {
+                    pstt = conn.prepareStatement(sql);
+                    pstt.setString(1, typeNilai.getValue().toString());
+                    pstt.setString(2,tfId.getText());
+                    pstt.execute();
+                    showIDujian();
+                    JOptionPane.showMessageDialog(null, "Data telah disimpan");
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Data tidak disimpan"+" "+e);
                 }
-            });
+            }
+        });
 
 
-        }
+    }
 
 
+    @FXML
+    void back(ActionEvent event) throws IOException {
+        btn_back.getScene().getWindow().hide();
+        Parent root = FXMLLoader.load(getClass().getResource("../fxmlClass/tampilanLogin.fxml"));
+        Stage mainStage = new Stage();
+        Scene scene = new Scene(root);
+        mainStage.setScene(scene);
+        mainStage.show();
+
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         showIDujian();
-
+        typeNilai.getItems().addAll("A","B+","B","C+","C","D","E");
     }
 
 }
+
