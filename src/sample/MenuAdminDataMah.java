@@ -20,8 +20,6 @@ import javafx.stage.Stage;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.sql.*;
 import java.util.ResourceBundle;
 
@@ -165,8 +163,7 @@ public class MenuAdminDataMah implements Initializable {
                     rs = pst.executeQuery(query);
                     while(rs.next()){
                         String file = String.valueOf(rs.getString("namaFilePorto"));
-                        String encodeNama = URLEncoder.encode(file, StandardCharsets.UTF_8.toString());
-                        encodeNama = encodeNama.replace("+", "%20");
+                        String encodeNama = file.replace(" ", "%20");
                         Desktop.getDesktop().browse(new URL("file:///D:/"+encodeNama).toURI());
                     }
                 } catch (Exception ex) {
@@ -190,8 +187,7 @@ public class MenuAdminDataMah implements Initializable {
                     rs = pst.executeQuery(query);
                     while(rs.next()){
                         String file = String.valueOf(rs.getString("namaFileCV"));
-                        String encodeNama = URLEncoder.encode(file, StandardCharsets.UTF_8.toString());
-                        encodeNama = encodeNama.replace("+", "%20");
+                        String encodeNama = file.replace(" ", "%20");
                         Desktop.getDesktop().browse(new URL("file:///D:/"+encodeNama).toURI());
                     }
                 } catch (Exception ex) {
