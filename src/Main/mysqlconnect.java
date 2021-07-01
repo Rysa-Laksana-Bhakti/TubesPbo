@@ -8,7 +8,7 @@ public class mysqlconnect {
 
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/datalogin","root","");
-            JOptionPane.showMessageDialog(null, "terhubung ke database");
+            //JOptionPane.showMessageDialog(null, "terhubung ke database");
             return conn;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);

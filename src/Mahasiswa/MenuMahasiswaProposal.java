@@ -59,6 +59,9 @@ public class MenuMahasiswaProposal {
     private DatePicker fieldWaktuPKN2;
 
     @FXML
+    private TextField fieldEmail;
+
+    @FXML
     private Button btn_submitAll;
 
     @FXML
@@ -136,79 +139,21 @@ public class MenuMahasiswaProposal {
             @Override
             public void handle(ActionEvent event) {
                 conn = mysqlconnect.ConnectDb();
-                String sql = "insert into dataMahasiswa (anggotaKel,alamatKel,waktuAwal,waktuAkhir,namaFileCV,namaFilePorto) values (?,?,?,?,?,?)";
+                String sql = "insert into dataMahasiswa (anggotaKel,alamatKel,waktuAwal,waktuAkhir,mail,namaFileCV,namaFilePorto) values (?,?,?,?,?,?,?)";
                 try {
                     pst = conn.prepareStatement(sql);
                     pst.setString(1, AnggotaKelompok.getText());
                     pst.setString(2, fieldAlamatPKN.getText());
                     pst.setString(3, fieldWaktuPKN.getValue().toString());
                     pst.setString(4, fieldWaktuPKN2.getValue().toString());
-                    pst.setString(5, tfCV.getText());
-                    pst.setString(6, tfPortofolio.getText());
+                    pst.setString(5, fieldEmail.getText());
+                    pst.setString(6, tfCV.getText());
+                    pst.setString(7, tfPortofolio.getText());
                     pst.execute();
-
                     JOptionPane.showMessageDialog(null, "Data telah disimpan");
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Data tidak disimpan");
                 }
-
-                Properties properties = new Properties();
-                properties.put("mail.smtp.auth", "true");
-                properties.put("mail.smtp.starttls.enable", "true");
-                properties.put("mail.smtp.host", "smtp.gmail.com");
-                properties.put("mail.smtp.port", "587");
-
-                String email = "email.noreply.bot@gmail.com";
-                String pass = "TubesMenyenangkan100%";
-                String penerima = "irfan64bit@gmail.com";
-
-                Session session = Session.getInstance(properties, new Authenticator() {
-                    @Override
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(email, pass);
-                    }
-                });
-
-                Message message = prepareMessage(session, email, penerima);
-                try {
-                    Transport.send(message);
-                    JOptionPane.showMessageDialog(null, "Terimakasih");
-                } catch (MessagingException e) {
-                    e.printStackTrace();
-                }
-            }
-            private Message prepareMessage(Session session, String email, String penerima){
-                Message message = new MimeMessage(session);
-                try {
-                    message.setFrom(new InternetAddress(email));
-                    message.setRecipient(Message.RecipientType.TO, new InternetAddress(penerima));
-                    message.setSubject("Pengajuan Proposal Mahasiswa");
-                    BodyPart isiEmail = new MimeBodyPart();
-                    isiEmail.setText(AnggotaKelompok.getText());
-
-                    Multipart multipart = new MimeMultipart();
-                    multipart.addBodyPart(isiEmail);
-
-                    isiEmail = new MimeBodyPart();
-                    String namaPorto = "D:\\"+tfPortofolio.getText();
-                    DataSource porto = new FileDataSource(namaPorto);
-                    isiEmail.setDataHandler(new DataHandler(porto));
-                    isiEmail.setFileName(tfPortofolio.getText());
-                    multipart.addBodyPart(isiEmail);
-
-                    isiEmail = new MimeBodyPart();
-                    String namaCV = "D:\\"+tfCV.getText();
-                    DataSource cv = new FileDataSource(namaCV);
-                    isiEmail.setDataHandler(new DataHandler(cv));
-                    isiEmail.setFileName(tfCV.getText());
-                    multipart.addBodyPart(isiEmail);
-
-                    message.setContent(multipart);
-                    return message;
-                } catch (MessagingException e) {
-                    e.printStackTrace();
-                }
-                return null;
             }
         });
     }
