@@ -48,6 +48,9 @@ public class MenuDosen implements Initializable {
     private Button btn_lihatNilaiP;
 
     @FXML
+    private TextField tfNama;
+
+    @FXML
     private Button btn_lihatLaporan;
 
     @FXML
@@ -174,6 +177,7 @@ public class MenuDosen implements Initializable {
     @FXML
     private void handleMouseAction(MouseEvent event) {
         DaftarUjian daftarMahasiswa = tvJadwalUjian.getSelectionModel().getSelectedItem();
+        tfNama.setText(daftarMahasiswa.getNama());
         tfId.setText(""+daftarMahasiswa.getID());
         tfNilai.setText(daftarMahasiswa.getNilai());
 

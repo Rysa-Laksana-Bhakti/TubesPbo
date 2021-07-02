@@ -93,13 +93,12 @@
                         <Image url="@../asset/logo-contact-person-png-Transparent-Images.png" />
                      </image>
                   </ImageView>
-                  <ComboBox fx:id="type_up" layoutX="68.0" layoutY="185.0" prefHeight="25.0" prefWidth="200.0" promptText="Anda Siapa" />
-                  <Button layoutX="34.0" layoutY="278.0" mnemonicParsing="false" onAction="#add_users" prefHeight="25.0" prefWidth="293.0" style="-fx-background-color: #ffcf0d; -fx-background-radius: 90;" text="SignUp">
+                  <ComboBox fx:id="type_up" layoutX="68.0" layoutY="185.0" prefHeight="25.0" prefWidth="200.0" promptText="Pilih user" />
+                  <Button layoutX="34.0" layoutY="260.0" mnemonicParsing="false" onAction="#add_users" prefHeight="25.0" prefWidth="293.0" style="-fx-background-color: #ffcf0d; -fx-background-radius: 90;" text="SignUp">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Button>
-                  <TextField fx:id="email_up" layoutX="68.0" layoutY="224.0" prefHeight="25.0" prefWidth="200.0" promptText="Masukkan Email" />
                </children>
             </AnchorPane>
          </children>

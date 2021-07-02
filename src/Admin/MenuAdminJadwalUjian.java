@@ -19,16 +19,22 @@ import javafx.stage.Stage;
 import Main.DaftarUjian;
 import Main.mysqlconnect;
 
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class MenuAdminJadwalUjian implements Initializable {
@@ -62,10 +68,13 @@ public class MenuAdminJadwalUjian implements Initializable {
     private Button btn_back;
 
     @FXML
-    private TextField tfWaktuJadwal;
+    private DatePicker tfWaktuJadwal;
 
     @FXML
-    private TextArea tfId;
+    private TextField tfNama;
+
+    @FXML
+    private TextField tfId;
 
     @FXML
     private Button btn_hapus;
@@ -125,8 +134,7 @@ public class MenuAdminJadwalUjian implements Initializable {
                     rs = pst.executeQuery(query);
                     while(rs.next()){
                         String file = String.valueOf(rs.getString("Laporan"));
-                        String encodeNama = URLEncoder.encode(file, StandardCharsets.UTF_8.toString());
-                        encodeNama = encodeNama.replace("+", "%20");
+                        String encodeNama = file.replace(" ", "%20");
                         Desktop.getDesktop().browse(new URL("file:///D:/"+encodeNama).toURI());
                     }
                 } catch (Exception ex) {
@@ -152,8 +160,7 @@ public class MenuAdminJadwalUjian implements Initializable {
                     rs = pst.executeQuery(query);
                     while(rs.next()){
                         String file = String.valueOf(rs.getString("NilaiPerusahaan"));
-                        String encodeNama = URLEncoder.encode(file, StandardCharsets.UTF_8.toString());
-                        encodeNama = encodeNama.replace("+", "%20");
+                        String encodeNama = file.replace(" ", "%20");
                         Desktop.getDesktop().browse(new URL("file:///D:/"+encodeNama).toURI());
                     }
                 } catch (Exception ex) {
@@ -171,9 +178,6 @@ public class MenuAdminJadwalUjian implements Initializable {
         ObservableList<DaftarUjian>DaftarUjianList= FXCollections.observableArrayList();
         conn = mysqlconnect.ConnectDb();
         String query = "SELECT * FROM DaftarUjian";
-
-
-
         try{
             pst = conn.createStatement();
             rs = pst.executeQuery(query);
@@ -207,7 +211,7 @@ public class MenuAdminJadwalUjian implements Initializable {
     private void handleMouseAction(MouseEvent event) {
         DaftarUjian daftarMahasiswa = tvJadwalUjian.getSelectionModel().getSelectedItem();
         tfId.setText(""+daftarMahasiswa.getID());
-        tfWaktuJadwal.setText(daftarMahasiswa.getWaktuUjian());
+        tfNama.setText(daftarMahasiswa.getNama());
 
             btn_submitAll.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -216,11 +220,47 @@ public class MenuAdminJadwalUjian implements Initializable {
                     String sql = "UPDATE daftarujian set waktuUjian=? where ID=? ";
                     try {
                         pstt = conn.prepareStatement(sql);
-                        pstt.setString(1, tfWaktuJadwal.getText());
-                        pstt.setString(2,tfId.getText());
+                        pstt.setString(1, tfWaktuJadwal.getValue().toString());
+                        pstt.setString(2, tfId.getText());
                         pstt.execute();
                         showIDujian();
                         JOptionPane.showMessageDialog(null, "Data telah disimpan");
+
+                        try {
+                            String query = "SELECT * FROM daftarujian where ID = " + tfId.getText();
+
+                            pst = conn.createStatement();
+                            rs = pst.executeQuery(query);
+                            while (rs.next()) {
+                                Properties properties = new Properties();
+                                properties.put("mail.smtp.auth", "true");
+                                properties.put("mail.smtp.starttls.enable", "true");
+                                properties.put("mail.smtp.host", "smtp.gmail.com");
+                                properties.put("mail.smtp.port", "587");
+
+                                String email = "email.noreply.bot@gmail.com";
+                                String pass = "TubesMenyenangkan100%";
+                                String penerima = String.valueOf(rs.getString("Email"));
+                                ;
+
+                                Session session = Session.getInstance(properties, new Authenticator() {
+                                    @Override
+                                    protected PasswordAuthentication getPasswordAuthentication() {
+                                        return new PasswordAuthentication(email, pass);
+                                    }
+                                });
+
+                                try {
+                                    Message message = prepareMessage(session, email, penerima);
+                                    Transport.send(message);
+                                    JOptionPane.showMessageDialog(null, "Terimakasih");
+                                } catch (MessagingException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        } catch (SQLException throwables) {
+                            throwables.printStackTrace();
+                        }
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(null, "Data tidak disimpan"+" "+e);
                     }
@@ -230,12 +270,35 @@ public class MenuAdminJadwalUjian implements Initializable {
 
         }
 
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         showIDujian();
 
     }
 
+    private Message prepareMessage(Session session, String email, String penerima) throws SQLException, MessagingException {
+        Message message = new MimeMessage(session);
+        try {
+            conn = mysqlconnect.ConnectDb();
+
+            String query = "SELECT * FROM daftarujian where ID = " + tfId.getText();
+
+            pst = conn.createStatement();
+            rs = pst.executeQuery(query);
+            while (rs.next()) {
+                String nama = String.valueOf(rs.getString("Nama"));
+                String nim = String.valueOf(rs.getString("NIM"));
+                String waktu = String.valueOf(rs.getString("waktuUjian"));
+
+                message.setFrom(new InternetAddress(email));
+                message.setRecipient(Message.RecipientType.TO, new InternetAddress(penerima));
+                message.setSubject("Pengumuman Ujian");
+                message.setText("Dengan ini diberitahukan kepada "+nama+" dengan NIM "+nim+" untuk mengikuti ujian pada "+waktu);
+                return message;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

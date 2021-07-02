@@ -1,5 +1,9 @@
 package Main;
 
+import javafx.scene.control.DatePicker;
+
+import java.sql.Date;
+
 public class DaftarUjian {
     private int ID;
     private String Nama;
@@ -33,13 +37,11 @@ public class DaftarUjian {
         return Email;
     }
 
-    public String getWaktuUjian() {
-        return waktuUjian;
-    }
-
     public String getNilai() {
         return Nilai;
     }
 
-
+    public String getWaktuUjian() {
+        return waktuUjian;
+    }
 }

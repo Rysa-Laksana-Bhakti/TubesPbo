@@ -47,9 +47,6 @@ public class ControllerLogin implements Initializable {
     private TextField txt_password_up;
 
     @FXML
-    private TextField email_up;
-
-    @FXML
     private ComboBox  type_up;
 
     @FXML
@@ -131,13 +128,12 @@ public class ControllerLogin implements Initializable {
 
     public void add_users(ActionEvent event){
         conn = mysqlconnect.ConnectDb();
-        String sql = "insert into users (username,password,type,email) values (?,?,?,?)";
+        String sql = "insert into users (username,password,type) values (?,?,?)";
         try {
             pst = conn.prepareStatement(sql);
             pst.setString(1, txt_username_up.getText());
             pst.setString(2, txt_password_up.getText());
             pst.setString(3, type_up.getValue().toString());
-            pst.setString(4, email_up.getText());
             pst.execute();
 
             JOptionPane.showMessageDialog(null, "Data telah disimpan");

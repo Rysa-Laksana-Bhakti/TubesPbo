@@ -88,8 +88,8 @@ public class MenuMahasiswaUjian {
                     pst.setString(4, tfNperusahaan.getText());
                     pst.setString(5, tfLaporan.getText());
                     pst.execute();
-
                     JOptionPane.showMessageDialog(null, "Data telah disimpan");
+
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Data tidak disimpan"+" "+e);
                 }

@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Jun 2021 pada 14.16
--- Versi server: 10.4.17-MariaDB
--- Versi PHP: 7.4.14
+-- Generation Time: Jul 01, 2021 at 02:36 PM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 5.5.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -24,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `daftarujian`
+-- Table structure for table `daftarujian`
 --
 
 CREATE TABLE `daftarujian` (
@@ -39,7 +38,7 @@ CREATE TABLE `daftarujian` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `daftarujian`
+-- Dumping data for table `daftarujian`
 --
 
 INSERT INTO `daftarujian` (`ID`, `Nama`, `NIM`, `Email`, `waktuUjian`, `Nilai`, `NilaiPerusahaan`, `Laporan`) VALUES
@@ -48,7 +47,7 @@ INSERT INTO `daftarujian` (`ID`, `Nama`, `NIM`, `Email`, `waktuUjian`, `Nilai`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `datamahasiswa`
+-- Table structure for table `datamahasiswa`
 --
 
 CREATE TABLE `datamahasiswa` (
@@ -57,89 +56,84 @@ CREATE TABLE `datamahasiswa` (
   `alamatKel` text NOT NULL,
   `waktuAwal` date NOT NULL,
   `waktuAkhir` date NOT NULL,
+  `mail` varchar(100) NOT NULL,
   `namaFileCV` varchar(100) NOT NULL,
   `namaFilePorto` varchar(100) NOT NULL,
   `Persetujuan` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `datamahasiswa`
+-- Dumping data for table `datamahasiswa`
 --
 
-INSERT INTO `datamahasiswa` (`idKel`, `anggotaKel`, `alamatKel`, `waktuAwal`, `waktuAkhir`, `namaFileCV`, `namaFilePorto`, `Persetujuan`) VALUES
-(1, '\naku\nkamu\ndia', 'Malang', '2021-06-03', '2021-06-04', '0001-dikonversi_compressed 2.pdf', '09 November 2020_ILPEM_Dahan CB._Yudisium.pdf', 'Approve'),
-(2, '\nbudi\nbeni\nburhan\nbennet', 'teyvat', '2021-06-12', '2021-06-16', 'Rysa Laksana_128_resume PKM 1.pdf', 'PL2-C-Rysa Laksana-202010370311128.pdf', 'Decline'),
-(3, 'budi\ndibu\nubid', 'Malang', '2021-06-20', '2021-07-03', 'PL1-C-Rysa Laksana-202010370311128.pdf', 'PL2-C-Rysa Laksana-202010370311128.pdf', '');
+INSERT INTO `datamahasiswa` (`idKel`, `anggotaKel`, `alamatKel`, `waktuAwal`, `waktuAkhir`, `mail`, `namaFileCV`, `namaFilePorto`, `Persetujuan`) VALUES
+(1, 'Saya\nDia \nKamu\nSiapa\n', 'Di Malang', '2021-07-01', '2021-07-30', 'irfan64bit@gmail.com', 'CV Kelompok.pdf', 'Portofolio Kelompok.pdf', 'Decline'),
+(2, 'Angg1\nAngg2\nAngg3\nAngg4\n', 'Where', '2021-07-01', '2021-07-30', 'irfan64bit@webmail.umm.ac.id', 'CV Kelompok.pdf', 'Portofolio Kelompok.pdf', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `username` varchar(30) NOT NULL,
   `password` varchar(30) NOT NULL,
-  `email` varchar(30) NOT NULL,
   `type` varchar(30) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `username`, `password`, `email`, `type`) VALUES
-(5, 'makan', 'minum', 'yaudah@gmail.com', 'Admin'),
-(8, 'rysal', '12345', 'klee@yahoo.com', 'Mahasiswa'),
-(6, 'pan', 'pan', 'pan@byon.com', 'Mahasiswa'),
-(7, 'ir', 'ir', 'ir@byon.com', 'Dosen');
+INSERT INTO `users` (`user_id`, `username`, `password`, `type`) VALUES
+(5, 'makan', 'minum', 'Admin'),
+(8, 'rysal', '12345', 'Mahasiswa'),
+(6, 'pan', 'pan', 'Mahasiswa'),
+(7, 'ir', 'ir', 'Dosen');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `daftarujian`
+-- Indexes for table `daftarujian`
 --
 ALTER TABLE `daftarujian`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indeks untuk tabel `datamahasiswa`
+-- Indexes for table `datamahasiswa`
 --
 ALTER TABLE `datamahasiswa`
   ADD PRIMARY KEY (`idKel`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `daftarujian`
+-- AUTO_INCREMENT for table `daftarujian`
 --
 ALTER TABLE `daftarujian`
-  MODIFY `ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+  MODIFY `ID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT untuk tabel `datamahasiswa`
+-- AUTO_INCREMENT for table `datamahasiswa`
 --
 ALTER TABLE `datamahasiswa`
-  MODIFY `idKel` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
+  MODIFY `idKel` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-COMMIT;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
