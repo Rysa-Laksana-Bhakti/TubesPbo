@@ -20,16 +20,17 @@ import javafx.stage.Stage;
 import Main.DaftarUjian;
 import Main.mysqlconnect;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class MenuDosen implements Initializable {
@@ -193,13 +194,46 @@ public class MenuDosen implements Initializable {
                     pstt.execute();
                     showIDujian();
                     JOptionPane.showMessageDialog(null, "Data telah disimpan");
+                    try {
+                        String query = "SELECT * FROM daftarujian where ID = " + tfId.getText();
+
+                        pst = conn.createStatement();
+                        rs = pst.executeQuery(query);
+                        while (rs.next()) {
+                            Properties properties = new Properties();
+                            properties.put("mail.smtp.auth", "true");
+                            properties.put("mail.smtp.starttls.enable", "true");
+                            properties.put("mail.smtp.host", "smtp.gmail.com");
+                            properties.put("mail.smtp.port", "587");
+
+                            String email = "email.noreply.bot@gmail.com";
+                            String pass = "TubesMenyenangkan100%";
+                            String penerima = String.valueOf(rs.getString("Email"));
+                            ;
+
+                            Session session = Session.getInstance(properties, new Authenticator() {
+                                @Override
+                                protected PasswordAuthentication getPasswordAuthentication() {
+                                    return new PasswordAuthentication(email, pass);
+                                }
+                            });
+
+                            try {
+                                Message message = prepareMessage(session, email, penerima);
+                                Transport.send(message);
+                                JOptionPane.showMessageDialog(null, "Terimakasih");
+                            } catch (MessagingException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Data tidak disimpan"+" "+e);
                 }
             }
         });
-
-
     }
 
 
@@ -218,6 +252,35 @@ public class MenuDosen implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         showIDujian();
         typeNilai.getItems().addAll("A","B+","B","C+","C","D","E");
+    }
+
+    private Message prepareMessage(Session session, String email, String penerima) throws SQLException, MessagingException {
+        Message message = new MimeMessage(session);
+        try {
+            conn = mysqlconnect.ConnectDb();
+
+            String query = "SELECT * FROM daftarujian where ID = " + tfId.getText();
+
+            pst = conn.createStatement();
+            rs = pst.executeQuery(query);
+            while (rs.next()) {
+                String nama = String.valueOf(rs.getString("Nama"));
+                String nim = String.valueOf(rs.getString("NIM"));
+                String waktu = String.valueOf(rs.getString("waktuUjian"));
+                String nilai = String.valueOf(rs.getString("Nilai"));
+
+
+                message.setFrom(new InternetAddress(email));
+                message.setRecipient(Message.RecipientType.TO, new InternetAddress(penerima));
+                message.setSubject("Pengumuman Nilai Ujian");
+                message.setText("Dengan ini diberitahukan kepada "+nama+" dengan NIM "+nim+" yang telah mengikuti ujian pada "+waktu+"\n"
+                +"Mendapatkan Nilai : "+nilai);
+                return message;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

@@ -39,12 +39,12 @@
                </font>
             </Label>
             <Button fx:id="btn_back" layoutX="602.0" layoutY="462.0" mnemonicParsing="false" onAction="#back" prefHeight="34.0" prefWidth="85.0" style="-fx-background-color: #ffd149;" text="Kembali" />
-            <Label layoutX="17.0" layoutY="85.0" text="ID">
+            <Label layoutX="17.0" layoutY="85.0" text="Nama">
                <font>
                   <Font size="25.0" />
                </font>
             </Label>
-            <TextArea fx:id="tfId" layoutX="52.0" layoutY="85.0" prefHeight="25.0" prefWidth="96.0" />
+            <TextArea fx:id="tfId" editable="false" layoutX="235.0" layoutY="85.0" prefHeight="25.0" prefWidth="96.0" visible="false" />
             <Button fx:id="btn_lihatNilaiP" layoutX="336.0" layoutY="90.0" mnemonicParsing="false" onAction="#lihatNilaiPer" prefHeight="25.0" prefWidth="144.0" text="Lihat Nilai Perusahaan" />
             <Button fx:id="btn_lihatLaporan" layoutX="543.0" layoutY="89.0" mnemonicParsing="false" onAction="#lihatLaporan" prefHeight="25.0" prefWidth="144.0" text="Lihat Laporan" />
             <TableView fx:id="tvJadwalUjian" layoutX="13.0" layoutY="134.0" onMouseClicked="#handleMouseAction" prefHeight="319.0" prefWidth="702.0">
@@ -60,6 +60,7 @@
             <ComboBox fx:id="typeNilai" layoutX="21.0" layoutY="466.0" prefHeight="25.0" prefWidth="129.0" promptText="Masukkan Nilai" />
             <Button fx:id="btn_submitAll" layoutX="257.0" layoutY="466.0" mnemonicParsing="false" text="Submit" />
             <TextField fx:id="tfNilai" editable="false" layoutX="175.0" layoutY="466.0" prefHeight="25.0" prefWidth="42.0" />
+            <TextField fx:id="tfNama" layoutX="101.0" layoutY="91.0" />
          </children>
       </AnchorPane>
    </children>

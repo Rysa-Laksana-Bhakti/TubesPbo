@@ -209,9 +209,14 @@ public class MenuAdminJadwalUjian implements Initializable {
     }
     @FXML
     private void handleMouseAction(MouseEvent event) {
-        DaftarUjian daftarMahasiswa = tvJadwalUjian.getSelectionModel().getSelectedItem();
-        tfId.setText(""+daftarMahasiswa.getID());
-        tfNama.setText(daftarMahasiswa.getNama());
+       try{
+           DaftarUjian daftarMahasiswa = tvJadwalUjian.getSelectionModel().getSelectedItem();
+           tfId.setText(""+daftarMahasiswa.getID());
+           tfNama.setText(daftarMahasiswa.getNama());
+       }catch (Exception e){
+           JOptionPane.showMessageDialog(null, "Data tidak ada");
+       }
+
 
             btn_submitAll.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -289,6 +294,7 @@ public class MenuAdminJadwalUjian implements Initializable {
                 String nama = String.valueOf(rs.getString("Nama"));
                 String nim = String.valueOf(rs.getString("NIM"));
                 String waktu = String.valueOf(rs.getString("waktuUjian"));
+
 
                 message.setFrom(new InternetAddress(email));
                 message.setRecipient(Message.RecipientType.TO, new InternetAddress(penerima));
